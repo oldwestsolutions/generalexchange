@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Box, Container, Text, VStack, HStack, Flex, Image, Link, Icon, Divider, Button } from '@chakra-ui/react'
-import { FaStar, FaMapMarkerAlt, FaPhone, FaGlobe, FaRegClock } from 'react-icons/fa'
+import { Box, Container, Text, VStack, HStack, Flex, Image, Link, Icon, Divider, Button, Input, InputGroup, InputRightElement, IconButton } from '@chakra-ui/react'
+import { FaSearch, FaStar, FaMapMarkerAlt, FaPhone, FaGlobe, FaRegClock } from 'react-icons/fa'
+import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 
 // Mock data for search results
@@ -49,6 +50,9 @@ const searchResults = [
 ]
 
 export default function SearchResults() {
+  const searchParams = useSearchParams()
+  const query = searchParams.get('q') || ''
+
   return (
     <>
       <Navbar />
@@ -59,13 +63,44 @@ export default function SearchResults() {
         fontFamily="'Helvetica Neue', sans-serif"
       >
         <Container maxW="container.lg">
-          <VStack spacing={8} align="stretch">
-            {/* Search Stats */}
-            <Text color="gray.600" fontSize="sm">
-              About 128 results for "roofing contractors in California"
-            </Text>
+          {/* Search Bar */}
+          <Box mb={8}>
+            <form style={{ width: '100%' }}>
+              <InputGroup size="lg">
+                <Input
+                  defaultValue={query}
+                  placeholder="Search for contractors, services, or locations..."
+                  borderRadius="full"
+                  borderColor="gray.200"
+                  _hover={{ borderColor: 'gray.300' }}
+                  _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
+                  fontSize="lg"
+                  py={6}
+                  px={6}
+                  color="gray.800"
+                  _placeholder={{ color: 'gray.400' }}
+                />
+                <InputRightElement h="full" pr={4}>
+                  <IconButton
+                    type="submit"
+                    aria-label="Search"
+                    icon={<FaSearch />}
+                    colorScheme="blue"
+                    borderRadius="full"
+                    size="lg"
+                  />
+                </InputRightElement>
+              </InputGroup>
+            </form>
+          </Box>
 
-            {/* Search Results */}
+          {/* Search Stats */}
+          <Text color="gray.600" fontSize="sm" mb={6}>
+            About {searchResults.length} results for "{query}"
+          </Text>
+
+          {/* Search Results */}
+          <VStack spacing={8} align="stretch">
             {searchResults.map((result) => (
               <Box key={result.id} py={6}>
                 <Flex gap={6}>
@@ -105,6 +140,19 @@ export default function SearchResults() {
                       {result.description}
                     </Text>
 
+                    <Flex mt={4} gap={4}>
+                      {result.services.map((service, index) => (
+                        <Button
+                          key={index}
+                          size="sm"
+                          variant="outline"
+                          colorScheme="blue"
+                        >
+                          {service}
+                        </Button>
+                      ))}
+                    </Flex>
+
                     <Flex mt={4} gap={4} color="gray.500">
                       <HStack spacing={1}>
                         <Icon as={FaPhone} />
@@ -112,53 +160,16 @@ export default function SearchResults() {
                       </HStack>
                       <HStack spacing={1}>
                         <Icon as={FaGlobe} />
-                        <Link href={`https://${result.website}`} color="blue.500">
+                        <Link href={`https://${result.website}`} target="_blank">
                           {result.website}
                         </Link>
                       </HStack>
-                    </Flex>
-
-                    <Flex mt={4} gap={2} flexWrap="wrap">
-                      {result.services.map((service, index) => (
-                        <Box
-                          key={index}
-                          bg="blue.50"
-                          color="blue.600"
-                          px={3}
-                          py={1}
-                          borderRadius="full"
-                          fontSize="sm"
-                        >
-                          {service}
-                        </Box>
-                      ))}
                     </Flex>
                   </Box>
                 </Flex>
                 <Divider mt={6} />
               </Box>
             ))}
-
-            {/* Pagination */}
-            <Flex justify="center" py={8}>
-              <HStack spacing={4}>
-                <Button variant="outline" colorScheme="blue">
-                  Previous
-                </Button>
-                <Button variant="outline" colorScheme="blue">
-                  1
-                </Button>
-                <Button variant="outline" colorScheme="blue">
-                  2
-                </Button>
-                <Button variant="outline" colorScheme="blue">
-                  3
-                </Button>
-                <Button variant="outline" colorScheme="blue">
-                  Next
-                </Button>
-              </HStack>
-            </Flex>
           </VStack>
         </Container>
       </Box>

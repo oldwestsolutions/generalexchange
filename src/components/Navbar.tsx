@@ -55,14 +55,14 @@ export default function Navbar() {
             h="40px"
             fallbackSrc="https://via.placeholder.com/150x40?text=Logo"
           />
-          <Link href="/" color="gray.700" fontWeight="medium">
+          <Link href="/" color="gray.600" _hover={{ color: 'blue.500' }}>
             Home
           </Link>
-          <Link href="/contractors" color="gray.700" fontWeight="medium">
-            Contractors
+          <Link href="/shop" color="gray.600" _hover={{ color: 'blue.500' }}>
+            Shop
           </Link>
-          <Link href="/services" color="gray.700" fontWeight="medium">
-            Services
+          <Link href="/search" color="gray.600" _hover={{ color: 'blue.500' }}>
+            Search
           </Link>
         </HStack>
 
