@@ -1,3 +1,7 @@
+import { metadata } from './metadata'
+
+export { metadata }
+
 'use client'
 
 import React from 'react'

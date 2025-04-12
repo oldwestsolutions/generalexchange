@@ -1,15 +1,11 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
 import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'General Exchange',
-  description: 'Your trusted marketplace for home improvement',
-}
 
 export default function RootLayout({
   children,
