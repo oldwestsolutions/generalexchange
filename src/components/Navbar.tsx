@@ -1,38 +1,31 @@
 'use client'
 
-import React from 'react'
-import { Box, Flex, Text, Button, keyframes } from '@chakra-ui/react'
-import { useWeb3React } from '@web3-react/core'
-import { InjectedConnector } from '@web3-react/injected-connector'
+import React, { useState, useMemo } from 'react'
+import { Box, Flex, Text, HStack, Link, IconButton, Image, Menu, MenuButton, MenuList, MenuItem, Button, Input, InputGroup, InputLeftElement, VStack, Divider } from '@chakra-ui/react'
+import { FaBars, FaMapMarkerAlt, FaChevronDown, FaSearch } from 'react-icons/fa'
 
-const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42],
-})
-
-const fade = keyframes`
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
-`
+// Mock location data
+const locations = [
+  { id: 1, city: 'San Francisco', state: 'CA', zip: '94105' },
+  { id: 2, city: 'Los Angeles', state: 'CA', zip: '90001' },
+  { id: 3, city: 'New York', state: 'NY', zip: '10001' },
+  { id: 4, city: 'Chicago', state: 'IL', zip: '60601' },
+  { id: 5, city: 'Seattle', state: 'WA', zip: '98101' }
+]
 
 export default function Navbar() {
-  const { active, account, activate, deactivate } = useWeb3React()
+  const [selectedLocation, setSelectedLocation] = useState(locations[0])
+  const [searchQuery, setSearchQuery] = useState('')
 
-  async function connect() {
-    try {
-      await activate(injected)
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
-
-  async function disconnect() {
-    try {
-      deactivate()
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
+  const filteredLocations = useMemo(() => {
+    if (!searchQuery) return locations
+    const query = searchQuery.toLowerCase()
+    return locations.filter(location => 
+      location.city.toLowerCase().includes(query) ||
+      location.state.toLowerCase().includes(query) ||
+      location.zip.includes(query)
+    )
+  }, [searchQuery])
 
   return (
     <Box
@@ -42,12 +35,10 @@ export default function Navbar() {
       left={0}
       right={0}
       zIndex={1000}
-      bg="rgba(255, 255, 255, 0.9)"
-      backdropFilter="blur(10px)"
+      bg="white"
       borderBottom="1px"
-      borderColor="rgba(0, 0, 0, 0.1)"
+      borderColor="gray.200"
       fontFamily="'Helvetica Neue', sans-serif"
-      letterSpacing="0.5px"
     >
       <Flex
         maxW="container.xl"
@@ -57,79 +48,97 @@ export default function Navbar() {
         justify="space-between"
         align="center"
       >
-        <Text
-          fontSize="xl"
-          fontWeight="300"
-          color="black"
-          letterSpacing="2px"
-          textTransform="uppercase"
-          animation={`${fade} 3s ease-in-out infinite`}
-        >
-          General Exchange
-        </Text>
+        <HStack spacing={8}>
+          <Image
+            src="/logo.png"
+            alt="Contractor Escrow"
+            h="40px"
+            fallbackSrc="https://via.placeholder.com/150x40?text=Logo"
+          />
+          <Link href="/" color="gray.700" fontWeight="medium">
+            Home
+          </Link>
+          <Link href="/contractors" color="gray.700" fontWeight="medium">
+            Contractors
+          </Link>
+          <Link href="/services" color="gray.700" fontWeight="medium">
+            Services
+          </Link>
+        </HStack>
 
-        <Flex gap={4} align="center">
-          {!active ? (
-            <Button
-              onClick={connect}
-              size="md"
-              variant="outline"
-              borderColor="black"
-              color="black"
-              fontWeight="300"
-              letterSpacing="1px"
-              borderRadius="0"
-              _hover={{
-                bg: "black",
-                color: "white",
-                transform: 'translateY(-1px)',
-              }}
-              _active={{
-                transform: 'translateY(0)',
-              }}
-              transition="all 0.2s ease"
+        <HStack spacing={4}>
+          <Menu>
+            <MenuButton
+              as={Button}
+              variant="ghost"
+              rightIcon={<FaChevronDown />}
+              leftIcon={<FaMapMarkerAlt />}
+              colorScheme="blue"
+              size="sm"
+              fontWeight="normal"
             >
-              Connect Wallet
-            </Button>
-          ) : (
-            <Flex gap={4} align="center">
-              <Text
-                color="black"
-                bg="transparent"
-                px={4}
-                py={2}
-                border="1px"
-                borderColor="black"
-                fontWeight="300"
-                letterSpacing="1px"
-                fontSize="sm"
-              >
-                {account?.slice(0, 6)}...{account?.slice(-4)}
-              </Text>
-              <Button
-                onClick={disconnect}
-                size="md"
-                variant="outline"
-                borderColor="black"
-                color="black"
-                fontWeight="300"
-                letterSpacing="1px"
-                borderRadius="0"
-                _hover={{
-                  bg: "black",
-                  color: "white",
-                  transform: 'translateY(-1px)',
-                }}
-                _active={{
-                  transform: 'translateY(0)',
-                }}
-                transition="all 0.2s ease"
-              >
-                Disconnect
-              </Button>
-            </Flex>
-          )}
-        </Flex>
+              {selectedLocation.city}, {selectedLocation.state}
+            </MenuButton>
+            <MenuList 
+              bg="white"
+              borderColor="gray.200"
+              boxShadow="lg"
+              zIndex={1001}
+              minW="300px"
+              p={2}
+            >
+              <VStack spacing={2} align="stretch">
+                <InputGroup size="sm">
+                  <InputLeftElement pointerEvents="none">
+                    <FaSearch color="gray.300" />
+                  </InputLeftElement>
+                  <Input
+                    placeholder="Search by city, state, or zip"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    borderRadius="md"
+                    borderColor="gray.200"
+                    _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
+                  />
+                </InputGroup>
+                <Divider />
+                <Box maxH="300px" overflowY="auto">
+                  {filteredLocations.map((location) => (
+                    <MenuItem
+                      key={location.id}
+                      onClick={() => {
+                        setSelectedLocation(location)
+                        setSearchQuery('')
+                      }}
+                      color="gray.700"
+                      _hover={{ bg: 'blue.50' }}
+                      _focus={{ bg: 'blue.50' }}
+                      py={2}
+                      px={4}
+                    >
+                      <Text>
+                        {location.city}, {location.state} {location.zip}
+                      </Text>
+                    </MenuItem>
+                  ))}
+                  {filteredLocations.length === 0 && (
+                    <Text px={4} py={2} color="gray.500" fontSize="sm">
+                      No locations found
+                    </Text>
+                  )}
+                </Box>
+              </VStack>
+            </MenuList>
+          </Menu>
+
+          <IconButton
+            aria-label="Menu"
+            icon={<FaBars />}
+            variant="ghost"
+            colorScheme="blue"
+            display={{ base: 'flex', md: 'none' }}
+          />
+        </HStack>
       </Flex>
     </Box>
   )
