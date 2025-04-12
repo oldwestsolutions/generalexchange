@@ -1,8 +1,7 @@
-import { metadata } from './metadata'
-
-export { metadata }
-
 'use client'
+
+import { metadata } from './metadata'
+export { metadata }
 
 import React from 'react'
 import { Box, Container, Heading, Text, VStack, Button, Input, InputGroup, InputRightElement, IconButton, Flex } from '@chakra-ui/react'
