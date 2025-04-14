@@ -1,34 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Box, Container, VStack, Heading, Text, Button, Input, FormControl, FormLabel } from '@chakra-ui/react'
-import { useWeb3React } from '@web3-react/core'
-import { InjectedConnector } from '@web3-react/injected-connector'
+import { Box, Container, VStack, Heading, Text, Button } from '@chakra-ui/react'
 import { FaWallet } from 'react-icons/fa'
 
-const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42]
-})
-
 export default function Login() {
-  const { active, account, activate, deactivate } = useWeb3React()
-
-  const connect = async () => {
-    try {
-      await activate(injected)
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
-
-  const disconnect = async () => {
-    try {
-      deactivate()
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
-
   return (
     <Box
       minH="100vh"
@@ -74,70 +50,27 @@ export default function Login() {
             Connect your wallet to access the General Exchange platform and manage your pension assets.
           </Text>
 
-          {!active ? (
-            <Button
-              onClick={connect}
-              size="lg"
-              variant="outline"
-              borderColor="tan.700"
-              color="tan.800"
-              fontWeight="300"
-              letterSpacing="1px"
-              borderRadius="0"
-              w="full"
-              _hover={{
-                bg: "tan.700",
-                color: "tan.50",
-                transform: 'translateY(-2px)',
-              }}
-              _active={{
-                transform: 'translateY(0)',
-              }}
-              transition="all 0.2s ease"
-            >
-              Connect Wallet
-            </Button>
-          ) : (
-            <VStack spacing={4} w="full">
-              <Text
-                color="tan.800"
-                bg="transparent"
-                px={4}
-                py={2}
-                border="1px"
-                borderColor="tan.700"
-                fontWeight="300"
-                letterSpacing="1px"
-                fontSize="sm"
-                w="full"
-                textAlign="center"
-              >
-                Connected with: {account?.slice(0, 6)}...{account?.slice(-4)}
-              </Text>
-              <Button
-                onClick={disconnect}
-                size="lg"
-                variant="outline"
-                borderColor="tan.700"
-                color="tan.800"
-                fontWeight="300"
-                letterSpacing="1px"
-                borderRadius="0"
-                w="full"
-                _hover={{
-                  bg: "tan.700",
-                  color: "tan.50",
-                  transform: 'translateY(-2px)',
-                }}
-                _active={{
-                  transform: 'translateY(0)',
-                }}
-                transition="all 0.2s ease"
-              >
-                Disconnect
-              </Button>
-            </VStack>
-          )}
+          <Button
+            size="lg"
+            variant="outline"
+            borderColor="tan.700"
+            color="tan.800"
+            fontWeight="300"
+            letterSpacing="1px"
+            borderRadius="0"
+            w="full"
+            _hover={{
+              bg: "tan.700",
+              color: "tan.50",
+              transform: 'translateY(-2px)',
+            }}
+            _active={{
+              transform: 'translateY(0)',
+            }}
+            transition="all 0.2s ease"
+          >
+            Connect Wallet
+          </Button>
 
           <Text
             color="tan.600"
