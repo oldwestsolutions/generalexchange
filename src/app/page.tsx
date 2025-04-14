@@ -41,7 +41,7 @@ export default function Home() {
           px={{ base: 4, md: 6 }}
         >
           <VStack spacing={0} align="center">
-            <Box position="relative" width={{ base: "260px", md: "400px" }} height={{ base: "130px", md: "200px" }} mb={0}>
+            <Box position="relative" width={{ base: "300px", md: "400px" }} height={{ base: "150px", md: "200px" }} mb={0}>
               <Image
                 src="/carriage.jpeg"
                 alt="Vintage Carriage"
@@ -68,21 +68,21 @@ export default function Home() {
               general exchange
             </Heading>
             <form onSubmit={handleSearch} style={{ width: '100%', maxWidth: '600px' }}>
-              <HStack spacing={3}>
+              <HStack spacing={{ base: 2, md: 3 }}>
                 <InputGroup size={{ base: "md", md: "lg" }}>
                   <Input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search for contractors, services, or locations..."
+                    placeholder="Search for contractors, services..."
                     borderRadius="full"
                     borderColor="gray.200"
                     _hover={{ borderColor: 'gray.300' }}
                     _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
-                    fontSize={{ base: "md", md: "lg" }}
-                    py={{ base: 5, md: 6 }}
+                    fontSize={{ base: "sm", md: "lg" }}
+                    py={{ base: 4, md: 6 }}
                     px={{ base: 4, md: 6 }}
                     color="gray.800"
-                    _placeholder={{ color: 'gray.400' }}
+                    _placeholder={{ color: 'gray.400', fontSize: { base: "sm", md: "lg" } }}
                   />
                   <InputRightElement h="full" pr={{ base: 1, md: 4 }}>
                     <Button
@@ -94,8 +94,9 @@ export default function Home() {
                       borderRadius="full"
                       size={{ base: "sm", md: "lg" }}
                       p={{ base: 2, md: 3 }}
+                      minW={{ base: "32px", md: "auto" }}
                     >
-                      <Box as={FaSearch} fontSize={{ base: "16px", md: "24px" }} />
+                      <Box as={FaSearch} fontSize={{ base: "14px", md: "24px" }} />
                     </Button>
                   </InputRightElement>
                 </InputGroup>
@@ -119,7 +120,7 @@ export default function Home() {
                     }}
                     transition="all 0.2s"
                     height="auto"
-                    minW={{ base: "60px", md: "auto" }}
+                    minW={{ base: "32px", md: "auto" }}
                   >
                     Shop
                   </Button>
