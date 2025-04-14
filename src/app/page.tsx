@@ -84,7 +84,7 @@ export default function Home() {
                     color="gray.800"
                     _placeholder={{ color: 'gray.400' }}
                   />
-                  <InputRightElement h="full" pr={{ base: 2, md: 4 }}>
+                  <InputRightElement h="full" pr={{ base: 1, md: 4 }}>
                     <Button
                       type="submit"
                       aria-label="Search"
@@ -92,10 +92,10 @@ export default function Home() {
                       color="white"
                       _hover={{ bg: 'blue.600' }}
                       borderRadius="full"
-                      size="lg"
-                      p={3}
+                      size={{ base: "sm", md: "lg" }}
+                      p={{ base: 2, md: 3 }}
                     >
-                      <Box as={FaSearch} fontSize="24px" />
+                      <Box as={FaSearch} fontSize={{ base: "16px", md: "24px" }} />
                     </Button>
                   </InputRightElement>
                 </InputGroup>
@@ -107,8 +107,8 @@ export default function Home() {
                   <Button
                     bg="black"
                     color="white"
-                    size="lg"
-                    p={3}
+                    size={{ base: "sm", md: "lg" }}
+                    p={{ base: 2, md: 3 }}
                     borderRadius="full"
                     fontWeight="500"
                     _hover={{
@@ -119,6 +119,7 @@ export default function Home() {
                     }}
                     transition="all 0.2s"
                     height="auto"
+                    minW={{ base: "60px", md: "auto" }}
                   >
                     Shop
                   </Button>
