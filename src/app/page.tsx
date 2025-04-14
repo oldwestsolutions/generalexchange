@@ -41,7 +41,7 @@ export default function Home() {
           px={{ base: 4, md: 6 }}
         >
           <VStack spacing={0} align="center">
-            <Box position="relative" width={{ base: "300px", md: "400px" }} height={{ base: "150px", md: "200px" }} mb={0}>
+            <Box position="relative" width={{ base: "100%", md: "400px" }} height={{ base: "200px", md: "200px" }} mb={0}>
               <Image
                 src="/carriage.jpeg"
                 alt="Vintage Carriage"
@@ -73,16 +73,20 @@ export default function Home() {
                   <Input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search for contractors, services..."
+                    placeholder="Search services & contractors..."
                     borderRadius="full"
                     borderColor="gray.200"
                     _hover={{ borderColor: 'gray.300' }}
                     _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
-                    fontSize={{ base: "sm", md: "lg" }}
+                    fontSize={{ base: "xs", md: "lg" }}
                     py={{ base: 4, md: 6 }}
                     px={{ base: 4, md: 6 }}
                     color="gray.800"
-                    _placeholder={{ color: 'gray.400', fontSize: { base: "sm", md: "lg" } }}
+                    _placeholder={{ 
+                      color: 'gray.400', 
+                      fontSize: { base: "xs", md: "lg" },
+                      textOverflow: "ellipsis"
+                    }}
                   />
                   <InputRightElement h="full" pr={{ base: 1, md: 4 }}>
                     <Button

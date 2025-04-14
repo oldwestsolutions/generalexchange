@@ -41,10 +41,10 @@ export default function Navbar() {
           <MenuButton
             as={IconButton}
             variant="ghost"
-            icon={<FaUserCircle />}
+            icon={<Box as={FaUserCircle} fontSize={{ base: "24px", md: "28px" }} />}
             colorScheme="blue"
             aria-label="Account menu"
-            size={{ base: "sm", md: "md" }}
+            size={{ base: "md", md: "lg" }}
           />
           <MenuList>
             <MenuItem as={NextLink} href="/dashboard">Dashboard</MenuItem>
