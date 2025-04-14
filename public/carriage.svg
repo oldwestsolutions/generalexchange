@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="currentColor" fill="none" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Wheels -->
+        <circle cx="200" cy="450" r="70"/>
+        <circle cx="550" cy="450" r="70"/>
+        <!-- Wheel spokes -->
+        <path d="M200,450 m-50,-50 l100,100 M200,450 m-50,50 l100,-100 M200,450 m-70,0 l140,0 M200,450 m0,-70 l0,140"/>
+        <path d="M550,450 m-50,-50 l100,100 M550,450 m-50,50 l100,-100 M550,450 m-70,0 l140,0 M550,450 m0,-70 l0,140"/>
+        
+        <!-- Carriage Body -->
+        <path d="M150,450 L600,450"/> <!-- Base -->
+        <path d="M250,450 C250,280 500,280 500,450"/> <!-- Main body curve -->
+        
+        <!-- Windows and Details -->
+        <path d="M300,320 L450,320"/> <!-- Window top -->
+        <path d="M300,320 L300,380"/> <!-- Window left -->
+        <path d="M450,320 L450,380"/> <!-- Window right -->
+        <path d="M300,380 L450,380"/> <!-- Window bottom -->
+        
+        <!-- Decorative Elements -->
+        <path d="M375,280 C375,260 375,260 375,240"/> <!-- Top ornament -->
+        <path d="M350,240 L400,240"/> <!-- Crown -->
+        <path d="M270,300 C270,320 280,330 300,330"/> <!-- Left lamp -->
+        <path d="M480,300 C480,320 470,330 450,330"/> <!-- Right lamp -->
+        
+        <!-- Horse -->
+        <path d="M600,450 L650,450"/> <!-- Connection to horse -->
+        <path d="M650,450 L700,450 L730,430 L750,380"/> <!-- Horse body -->
+        <path d="M750,380 L770,330"/> <!-- Horse neck -->
+        <path d="M770,330 L790,350"/> <!-- Horse head -->
+        <path d="M730,450 L730,500"/> <!-- Horse leg -->
+        <path d="M750,450 L750,500"/> <!-- Horse leg -->
+    </g>
+</svg> 
