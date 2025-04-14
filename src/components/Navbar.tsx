@@ -49,12 +49,15 @@ export default function Navbar() {
         align="center"
       >
         <HStack spacing={8}>
-          <Image
-            src="/logo.png"
-            alt="Contractor Escrow"
-            h="40px"
-            fallbackSrc="https://via.placeholder.com/150x40?text=Logo"
-          />
+          <Link href="/" display="flex" alignItems="center">
+            <Image
+              src="/logo.svg"
+              alt="General Exchange"
+              h="32px"
+              w="32px"
+              objectFit="contain"
+            />
+          </Link>
           <Link href="/" color="gray.600" _hover={{ color: 'blue.500' }}>
             Home
           </Link>
