@@ -1,25 +1,19 @@
 'use client'
 
 import React from 'react'
-import { Box, Container, VStack, Heading, Text, Button, Input, FormControl, FormLabel, keyframes } from '@chakra-ui/react'
+import { Box, Container, VStack, Heading, Text, Button, Input, FormControl, FormLabel } from '@chakra-ui/react'
 import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { FaWallet } from 'react-icons/fa'
 
-const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42],
-})
-
-const fade = keyframes`
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
-`
-
 export default function Login() {
   const { active, account, activate, deactivate } = useWeb3React()
 
-  async function connect() {
+  const injected = new InjectedConnector({
+    supportedChainIds: [1, 3, 4, 5, 42]
+  })
+
+  const connect = async () => {
     try {
       await activate(injected)
     } catch (ex) {
@@ -27,7 +21,7 @@ export default function Login() {
     }
   }
 
-  async function disconnect() {
+  const disconnect = async () => {
     try {
       deactivate()
     } catch (ex) {
@@ -64,7 +58,8 @@ export default function Login() {
             fontWeight="300"
             letterSpacing="2px"
             textTransform="uppercase"
-            animation={`${fade} 3s ease-in-out infinite`}
+            transition="opacity 3s ease-in-out"
+            _hover={{ opacity: 0.8 }}
           >
             Connect Your Wallet
           </Heading>

@@ -9,6 +9,10 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'General Exchange',
   description: 'Your trusted marketplace for home improvement',
+  icons: {
+    icon: '/carriage.jpeg',
+    apple: '/carriage.jpeg',
+  },
 }
 
 export default function RootLayout({
