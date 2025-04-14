@@ -38,10 +38,16 @@ export default function Home() {
           alignItems="flex-start" 
           justifyContent="center"
           pt={{ base: "15vh", md: "15vh" }}
-          px={{ base: 4, md: 6 }}
+          px={{ base: 0, md: 6 }}
         >
-          <VStack spacing={0} align="center">
-            <Box position="relative" width={{ base: "100%", md: "400px" }} height={{ base: "200px", md: "200px" }} mb={0}>
+          <VStack spacing={0} align="center" w="full">
+            <Box 
+              position="relative" 
+              width="100vw" 
+              height={{ base: "180px", md: "200px" }} 
+              mb={0}
+              mx={{ base: "-16px", md: "0" }}
+            >
               <Image
                 src="/carriage.jpeg"
                 alt="Vintage Carriage"
@@ -56,10 +62,10 @@ export default function Home() {
               letterSpacing="-0.02em"
               textTransform="lowercase"
               color="black"
-              mb={{ base: 6, md: 8 }}
+              mb={{ base: 4, md: 8 }}
+              mt={{ base: 0, md: 0 }}
               fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
               lineHeight="0.7"
-              mt={0}
               sx={{
                 WebkitFontSmoothing: "antialiased",
                 MozOsxFontSmoothing: "grayscale"
@@ -68,68 +74,70 @@ export default function Home() {
               general exchange
             </Heading>
             <form onSubmit={handleSearch} style={{ width: '100%', maxWidth: '600px' }}>
-              <HStack spacing={{ base: 2, md: 3 }}>
-                <InputGroup size={{ base: "md", md: "lg" }}>
-                  <Input
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search services & contractors..."
-                    borderRadius="full"
-                    borderColor="gray.200"
-                    _hover={{ borderColor: 'gray.300' }}
-                    _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
-                    fontSize={{ base: "xs", md: "lg" }}
-                    py={{ base: 4, md: 6 }}
-                    px={{ base: 4, md: 6 }}
-                    color="gray.800"
-                    _placeholder={{ 
-                      color: 'gray.400', 
-                      fontSize: { base: "xs", md: "lg" },
-                      textOverflow: "ellipsis"
-                    }}
-                  />
-                  <InputRightElement h="full" pr={{ base: 1, md: 4 }}>
-                    <Button
-                      type="submit"
-                      aria-label="Search"
-                      bg="blue.500"
-                      color="white"
-                      _hover={{ bg: 'blue.600' }}
+              <Box px={{ base: 4, md: 0 }}>
+                <HStack spacing={{ base: 2, md: 3 }}>
+                  <InputGroup size={{ base: "md", md: "lg" }}>
+                    <Input
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search services & contractors..."
                       borderRadius="full"
+                      borderColor="gray.200"
+                      _hover={{ borderColor: 'gray.300' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
+                      fontSize={{ base: "xs", md: "lg" }}
+                      py={{ base: 4, md: 6 }}
+                      px={{ base: 4, md: 6 }}
+                      color="gray.800"
+                      _placeholder={{ 
+                        color: 'gray.400', 
+                        fontSize: { base: "xs", md: "lg" },
+                        textOverflow: "ellipsis"
+                      }}
+                    />
+                    <InputRightElement h="full" pr={{ base: 1, md: 4 }}>
+                      <Button
+                        type="submit"
+                        aria-label="Search"
+                        bg="blue.500"
+                        color="white"
+                        _hover={{ bg: 'blue.600' }}
+                        borderRadius="full"
+                        size={{ base: "sm", md: "lg" }}
+                        p={{ base: 2, md: 3 }}
+                        minW={{ base: "32px", md: "auto" }}
+                      >
+                        <Box as={FaSearch} fontSize={{ base: "14px", md: "24px" }} />
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                  <Link 
+                    as={NextLink} 
+                    href="/shop" 
+                    _hover={{ textDecoration: 'none' }}
+                  >
+                    <Button
+                      bg="black"
+                      color="white"
                       size={{ base: "sm", md: "lg" }}
                       p={{ base: 2, md: 3 }}
+                      borderRadius="full"
+                      fontWeight="500"
+                      _hover={{
+                        bg: 'gray.800',
+                      }}
+                      _active={{
+                        bg: 'gray.700',
+                      }}
+                      transition="all 0.2s"
+                      height="auto"
                       minW={{ base: "32px", md: "auto" }}
                     >
-                      <Box as={FaSearch} fontSize={{ base: "14px", md: "24px" }} />
+                      Shop
                     </Button>
-                  </InputRightElement>
-                </InputGroup>
-                <Link 
-                  as={NextLink} 
-                  href="/shop" 
-                  _hover={{ textDecoration: 'none' }}
-                >
-                  <Button
-                    bg="black"
-                    color="white"
-                    size={{ base: "sm", md: "lg" }}
-                    p={{ base: 2, md: 3 }}
-                    borderRadius="full"
-                    fontWeight="500"
-                    _hover={{
-                      bg: 'gray.800',
-                    }}
-                    _active={{
-                      bg: 'gray.700',
-                    }}
-                    transition="all 0.2s"
-                    height="auto"
-                    minW={{ base: "32px", md: "auto" }}
-                  >
-                    Shop
-                  </Button>
-                </Link>
-              </HStack>
+                  </Link>
+                </HStack>
+              </Box>
             </form>
           </VStack>
         </Container>
