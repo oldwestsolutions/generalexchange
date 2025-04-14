@@ -6,12 +6,12 @@ import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { FaWallet } from 'react-icons/fa'
 
+const injected = new InjectedConnector({
+  supportedChainIds: [1, 3, 4, 5, 42]
+})
+
 export default function Login() {
   const { active, account, activate, deactivate } = useWeb3React()
-
-  const injected = new InjectedConnector({
-    supportedChainIds: [1, 3, 4, 5, 42]
-  })
 
   const connect = async () => {
     try {
