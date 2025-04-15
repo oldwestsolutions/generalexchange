@@ -6,27 +6,6 @@ import { FaUserCircle } from 'react-icons/fa'
 import NextLink from 'next/link'
 
 export default function Navbar() {
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-
-  useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY) {
-          setIsVisible(false)
-        } else {
-          setIsVisible(true)
-        }
-        setLastScrollY(window.scrollY)
-      }
-    }
-
-    window.addEventListener('scroll', controlNavbar)
-    return () => {
-      window.removeEventListener('scroll', controlNavbar)
-    }
-  }, [lastScrollY])
-
   return (
     <Box
       as="nav"
@@ -35,11 +14,9 @@ export default function Navbar() {
       left={0}
       right={0}
       zIndex={1000}
-      transform={`translateY(${isVisible ? '0' : '-100%'})`}
-      transition="transform 0.3s ease-in-out"
-      bg={useColorModeValue('white', 'gray.800')}
+      bg="white"
       borderBottom="1px"
-      borderColor={useColorModeValue('gray.200', 'gray.700')}
+      borderColor="gray.200"
       fontFamily="'Helvetica Neue', sans-serif"
     >
       <Box maxW="container.xl" mx="auto" px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}>
