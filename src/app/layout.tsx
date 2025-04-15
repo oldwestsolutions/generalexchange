@@ -13,13 +13,12 @@ export const metadata: Metadata = {
     icon: '/carraigetrans.jpeg',
     apple: '/carraigetrans.jpeg',
   },
-}
-
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 }
 
 export default function RootLayout({

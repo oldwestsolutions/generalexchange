@@ -208,19 +208,4 @@ function SearchContent() {
   )
 }
 
-export default function SearchResults() {
-  return (
-    <>
-      <Navbar />
-      <Suspense fallback={
-        <Box minH="100vh" bg="white" pt={20}>
-          <Container maxW="container.lg">
-            <Text>Loading search results...</Text>
-          </Container>
-        </Box>
-      }>
-        <SearchContent />
-      </Suspense>
-    </>
-  )
-}
+export default SearchContent
