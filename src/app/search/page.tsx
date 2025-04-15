@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react'
 import { Box, Container, Text, VStack, HStack, Flex, Image, Link, Icon, Divider, Button, Input, InputGroup, InputRightElement, IconButton } from '@chakra-ui/react'
-import { FaSearch, FaStar, FaMapMarkerAlt, FaPhone, FaGlobe, FaRegClock } from 'react-icons/fa'
+import { FaSearch, FaStar, FaMapMarkerAlt, FaPhone, FaGlobe, FaRegClock, FaRegComment } from 'react-icons/fa'
 import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 
@@ -100,8 +100,8 @@ function SearchContent() {
         {/* Search Results */}
         <VStack spacing={{ base: 6, md: 8 }} align="stretch">
           {searchResults.map((result) => (
-            <Box key={result.id} py={{ base: 4, md: 6 }}>
-              <Flex gap={{ base: 4, md: 6 }} direction={{ base: "column", md: "row" }}>
+            <Box key={result.id} py={{ base: 4, md: 6 }} px={{ base: 3, md: 6 }} bg="white" boxShadow="md" borderRadius="xl" _hover={{ boxShadow: 'xl', transform: 'translateY(-2px)', transition: 'all 0.2s' }} transition="all 0.2s">
+              <Flex gap={{ base: 4, md: 6 }} direction={{ base: "column", md: "row" }} align="center">
                 {/* Business Image */}
                 <Image
                   src={result.image}
@@ -113,11 +113,10 @@ function SearchContent() {
                 />
 
                 {/* Business Info */}
-                <Box flex={1}>
+                <Box flex={1} w="full">
                   <Link href={`/contractor/${result.id}`} color="blue.600" fontSize={{ base: "lg", md: "xl" }} fontWeight="medium">
                     {result.name}
                   </Link>
-                  
                   <Flex align="center" mt={2} gap={{ base: 2, md: 4 }} direction={{ base: "column", md: "row" }}>
                     <HStack spacing={1}>
                       <Icon as={FaStar} color="yellow.400" />
@@ -133,11 +132,9 @@ function SearchContent() {
                       <Text fontSize={{ base: "xs", md: "sm" }}>{result.availability}</Text>
                     </HStack>
                   </Flex>
-
                   <Text mt={2} color="gray.600" fontSize={{ base: "sm", md: "md" }}>
                     {result.description}
                   </Text>
-
                   <Flex mt={4} gap={2} wrap="wrap">
                     {result.services.map((service, index) => (
                       <Button
@@ -145,17 +142,55 @@ function SearchContent() {
                         size={{ base: "xs", md: "sm" }}
                         variant="outline"
                         colorScheme="blue"
+                        borderRadius="full"
+                        fontWeight="500"
+                        px={4}
+                        py={1}
                       >
                         {service}
                       </Button>
                     ))}
                   </Flex>
-
-                  <Flex mt={4} gap={{ base: 2, md: 4 }} color="gray.500" direction={{ base: "column", md: "row" }}>
-                    <HStack spacing={1}>
-                      <Icon as={FaPhone} />
-                      <Text fontSize={{ base: "xs", md: "sm" }}>{result.phone}</Text>
-                    </HStack>
+                  <Flex
+                    mt={4}
+                    gap={{ base: 2, md: 4 }}
+                    color="gray.500"
+                    direction="row"
+                    wrap="wrap"
+                    justify="flex-start"
+                    align="center"
+                    alignSelf="flex-start"
+                  >
+                    <Button
+                      as="a"
+                      href={`tel:${result.phone.replace(/[^0-9]/g, '')}`}
+                      leftIcon={<Icon as={FaPhone} />}
+                      colorScheme="blue"
+                      size="sm"
+                      borderRadius="full"
+                      fontWeight="bold"
+                      px={4}
+                      py={1}
+                      fontSize={{ base: "xs", md: "sm" }}
+                      variant="solid"
+                      mr={2}
+                    >
+                      Call
+                    </Button>
+                    <Button
+                      leftIcon={<Icon as={FaRegComment} />}
+                      colorScheme="blue"
+                      size="sm"
+                      borderRadius="full"
+                      fontWeight="bold"
+                      px={4}
+                      py={1}
+                      fontSize={{ base: "xs", md: "sm" }}
+                      variant="outline"
+                      mr={2}
+                    >
+                      Message
+                    </Button>
                     <HStack spacing={1}>
                       <Icon as={FaGlobe} />
                       <Link href={`https://${result.website}`} target="_blank" fontSize={{ base: "xs", md: "sm" }}>
@@ -165,7 +200,6 @@ function SearchContent() {
                   </Flex>
                 </Box>
               </Flex>
-              <Divider mt={{ base: 4, md: 6 }} />
             </Box>
           ))}
         </VStack>
@@ -174,19 +208,4 @@ function SearchContent() {
   )
 }
 
-export default function SearchResults() {
-  return (
-    <>
-      <Navbar />
-      <Suspense fallback={
-        <Box minH="100vh" bg="white" pt={20}>
-          <Container maxW="container.lg">
-            <Text>Loading search results...</Text>
-          </Container>
-        </Box>
-      }>
-        <SearchContent />
-      </Suspense>
-    </>
-  )
-} 
+export default SearchContent

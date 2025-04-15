@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: 'General Exchange',
   description: 'Your trusted marketplace for home improvement',
   icons: {
-    icon: '/carriage.jpeg',
-    apple: '/carriage.jpeg',
+    icon: '/carraigetrans.jpeg',
+    apple: '/carraigetrans.jpeg',
   },
   viewport: {
     width: 'device-width',

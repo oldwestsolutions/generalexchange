@@ -28,17 +28,29 @@ export default function Navbar() {
       borderColor="gray.200"
       fontFamily="'Helvetica Neue', sans-serif"
     >
-      <Box maxW="container.xl" mx="auto" px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}>
+      <Box maxW="container.xl" mx="auto" px={{ base: 4, md: 6 }} py={{ base: 1, md: 2 }}>
         <Flex justify="space-between" align="center">
           <HStack spacing={{ base: 2, md: 4 }}>
-            <Box as={Link} href="/">
+            <Box as={Link} href="/" display="flex" alignItems="center">
               <Image
-                src="/xlogo.jpeg"
+                src="/carraigetrans.jpeg"
                 alt="General Exchange"
-                h={{ base: "40px", md: "48px" }}
-                w={{ base: "40px", md: "48px" }}
+                h={{ base: "64px", md: "80px" }}
+                w="auto"
+                maxW={{ base: "180px", md: "240px" }}
                 objectFit="contain"
               />
+              <Text
+                ml={3}
+                fontWeight="bold"
+                fontSize={{ base: "xl", md: "2xl" }}
+                color="gray.800"
+                letterSpacing="-0.5px"
+                fontFamily="'Cinzel', serif"
+                display={{ base: 'none', sm: 'block' }}
+              >
+                General Exchange
+              </Text>
             </Box>
           </HStack>
           <HStack spacing={4}>
