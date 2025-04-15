@@ -57,14 +57,14 @@ function SearchContent() {
     <Box
       minH="100vh"
       bg="white"
-      pt={20}
+      pt={{ base: 16, md: 20 }}
       fontFamily="'Helvetica Neue', sans-serif"
     >
-      <Container maxW="container.lg">
+      <Container maxW="container.lg" px={{ base: 4, md: 6 }}>
         {/* Search Bar */}
-        <Box mb={8}>
+        <Box mb={{ base: 6, md: 8 }}>
           <form style={{ width: '100%' }}>
-            <InputGroup size="lg">
+            <InputGroup size={{ base: "md", md: "lg" }}>
               <Input
                 defaultValue={query}
                 placeholder="Search for contractors, services, or locations..."
@@ -72,20 +72,20 @@ function SearchContent() {
                 borderColor="gray.200"
                 _hover={{ borderColor: 'gray.300' }}
                 _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
-                fontSize="lg"
-                py={6}
-                px={6}
+                fontSize={{ base: "sm", md: "lg" }}
+                py={{ base: 4, md: 6 }}
+                px={{ base: 4, md: 6 }}
                 color="gray.800"
                 _placeholder={{ color: 'gray.400' }}
               />
-              <InputRightElement h="full" pr={4}>
+              <InputRightElement h="full" pr={{ base: 2, md: 4 }}>
                 <IconButton
                   type="submit"
                   aria-label="Search"
                   icon={<FaSearch />}
                   colorScheme="blue"
                   borderRadius="full"
-                  size="lg"
+                  size={{ base: "sm", md: "lg" }}
                 />
               </InputRightElement>
             </InputGroup>
@@ -93,20 +93,20 @@ function SearchContent() {
         </Box>
 
         {/* Search Stats */}
-        <Text color="gray.600" fontSize="sm" mb={6}>
+        <Text color="gray.600" fontSize={{ base: "xs", md: "sm" }} mb={{ base: 4, md: 6 }}>
           About {searchResults.length} results for "{query}"
         </Text>
 
         {/* Search Results */}
-        <VStack spacing={8} align="stretch">
+        <VStack spacing={{ base: 6, md: 8 }} align="stretch">
           {searchResults.map((result) => (
-            <Box key={result.id} py={6}>
-              <Flex gap={6}>
+            <Box key={result.id} py={{ base: 4, md: 6 }}>
+              <Flex gap={{ base: 4, md: 6 }} direction={{ base: "column", md: "row" }}>
                 {/* Business Image */}
                 <Image
                   src={result.image}
                   alt={result.name}
-                  boxSize="100px"
+                  boxSize={{ base: "80px", md: "100px" }}
                   objectFit="cover"
                   borderRadius="md"
                   fallbackSrc="https://via.placeholder.com/100x100?text=No+Image"
@@ -114,35 +114,35 @@ function SearchContent() {
 
                 {/* Business Info */}
                 <Box flex={1}>
-                  <Link href={`/contractor/${result.id}`} color="blue.600" fontSize="xl" fontWeight="medium">
+                  <Link href={`/contractor/${result.id}`} color="blue.600" fontSize={{ base: "lg", md: "xl" }} fontWeight="medium">
                     {result.name}
                   </Link>
                   
-                  <Flex align="center" mt={2} gap={4}>
+                  <Flex align="center" mt={2} gap={{ base: 2, md: 4 }} direction={{ base: "column", md: "row" }}>
                     <HStack spacing={1}>
                       <Icon as={FaStar} color="yellow.400" />
-                      <Text>{result.rating}</Text>
-                      <Text color="gray.500">({result.reviewCount} reviews)</Text>
+                      <Text fontSize={{ base: "sm", md: "md" }}>{result.rating}</Text>
+                      <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }}>({result.reviewCount} reviews)</Text>
                     </HStack>
                     <HStack spacing={1} color="gray.500">
                       <Icon as={FaMapMarkerAlt} />
-                      <Text>{result.location}</Text>
+                      <Text fontSize={{ base: "xs", md: "sm" }}>{result.location}</Text>
                     </HStack>
                     <HStack spacing={1} color="gray.500">
                       <Icon as={FaRegClock} />
-                      <Text>{result.availability}</Text>
+                      <Text fontSize={{ base: "xs", md: "sm" }}>{result.availability}</Text>
                     </HStack>
                   </Flex>
 
-                  <Text mt={2} color="gray.600">
+                  <Text mt={2} color="gray.600" fontSize={{ base: "sm", md: "md" }}>
                     {result.description}
                   </Text>
 
-                  <Flex mt={4} gap={4}>
+                  <Flex mt={4} gap={2} wrap="wrap">
                     {result.services.map((service, index) => (
                       <Button
                         key={index}
-                        size="sm"
+                        size={{ base: "xs", md: "sm" }}
                         variant="outline"
                         colorScheme="blue"
                       >
@@ -151,21 +151,21 @@ function SearchContent() {
                     ))}
                   </Flex>
 
-                  <Flex mt={4} gap={4} color="gray.500">
+                  <Flex mt={4} gap={{ base: 2, md: 4 }} color="gray.500" direction={{ base: "column", md: "row" }}>
                     <HStack spacing={1}>
                       <Icon as={FaPhone} />
-                      <Text>{result.phone}</Text>
+                      <Text fontSize={{ base: "xs", md: "sm" }}>{result.phone}</Text>
                     </HStack>
                     <HStack spacing={1}>
                       <Icon as={FaGlobe} />
-                      <Link href={`https://${result.website}`} target="_blank">
+                      <Link href={`https://${result.website}`} target="_blank" fontSize={{ base: "xs", md: "sm" }}>
                         {result.website}
                       </Link>
                     </HStack>
                   </Flex>
                 </Box>
               </Flex>
-              <Divider mt={6} />
+              <Divider mt={{ base: 4, md: 6 }} />
             </Box>
           ))}
         </VStack>

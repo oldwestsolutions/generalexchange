@@ -41,7 +41,20 @@ export default function Home() {
           pt={{ base: "15vh", md: "15vh" }}
           px={{ base: 0, md: 6 }}
         >
-          <VStack spacing={0} align="center" w="full">
+          <VStack spacing={0} align="center" w="full" bg="white" py={8} borderRadius="2xl" position="relative" overflow="hidden">
+            {/* Subtle Pattern Overlay */}
+            <Box
+              position="absolute"
+              top={0}
+              left={0}
+              right={0}
+              bottom={0}
+              opacity={0.1}
+              backgroundImage="url('/pattern.png')"
+              backgroundSize="cover"
+              backgroundPosition="center"
+            />
+            
             <Box 
               position="relative" 
               width="100vw" 
@@ -62,7 +75,7 @@ export default function Home() {
               fontWeight="900"
               letterSpacing="-0.02em"
               textTransform="lowercase"
-              color="black"
+              color="gray.800"
               mb={{ base: 4, md: 8 }}
               mt={{ base: 0, md: 0 }}
               fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
@@ -70,6 +83,18 @@ export default function Home() {
               sx={{
                 WebkitFontSmoothing: "antialiased",
                 MozOsxFontSmoothing: "grayscale"
+              }}
+              position="relative"
+              _after={{
+                content: '""',
+                position: "absolute",
+                bottom: "-10px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "100px",
+                height: "4px",
+                bg: "brown.300",
+                borderRadius: "full"
               }}
             >
               general exchange
@@ -99,7 +124,7 @@ export default function Home() {
                         textOverflow: "ellipsis"
                       }}
                     />
-                    <InputRightElement h="full" pr={{ base: 1, md: 4 }}>
+                    <InputRightElement h="full" pr={0}>
                       <Button
                         type="submit"
                         aria-label="Search"
@@ -110,6 +135,8 @@ export default function Home() {
                         size={{ base: "sm", md: "lg" }}
                         p={{ base: 2, md: 3 }}
                         minW={{ base: "32px", md: "auto" }}
+                        h="full"
+                        borderLeftRadius={0}
                       >
                         <Box as={FaSearch} fontSize={{ base: "14px", md: "24px" }} />
                       </Button>
@@ -158,10 +185,12 @@ export default function Home() {
                 colorScheme="blue"
                 variant="outline"
                 borderColor="gray.200"
-                color="gray.700"
-                _hover={{ bg: "blue.50", borderColor: "blue.300" }}
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
                 size="md"
                 fontWeight="500"
+                transition="all 0.2s"
+                _active={{ transform: "scale(0.98)" }}
               >
                 Home Services
               </Button>
@@ -170,10 +199,12 @@ export default function Home() {
                 colorScheme="blue"
                 variant="outline"
                 borderColor="gray.200"
-                color="gray.700"
-                _hover={{ bg: "blue.50", borderColor: "blue.300" }}
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
                 size="md"
                 fontWeight="500"
+                transition="all 0.2s"
+                _active={{ transform: "scale(0.98)" }}
               >
                 Commercial
               </Button>
@@ -182,10 +213,12 @@ export default function Home() {
                 colorScheme="blue"
                 variant="outline"
                 borderColor="gray.200"
-                color="gray.700"
-                _hover={{ bg: "blue.50", borderColor: "blue.300" }}
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
                 size="md"
                 fontWeight="500"
+                transition="all 0.2s"
+                _active={{ transform: "scale(0.98)" }}
               >
                 Repairs
               </Button>
@@ -194,10 +227,12 @@ export default function Home() {
                 colorScheme="blue"
                 variant="outline"
                 borderColor="gray.200"
-                color="gray.700"
-                _hover={{ bg: "blue.50", borderColor: "blue.300" }}
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
                 size="md"
                 fontWeight="500"
+                transition="all 0.2s"
+                _active={{ transform: "scale(0.98)" }}
               >
                 Renovations
               </Button>
@@ -206,21 +241,23 @@ export default function Home() {
             {/* Browse Categories */}
             <Text
               fontSize="sm"
-              color="gray.500"
+              color="gray.600"
               mt={4}
               textAlign="center"
               display="flex"
               alignItems="center"
               gap={2}
+              flexWrap="wrap"
+              justifyContent="center"
             >
               <Box as="span" fontWeight="medium">Browse by:</Box>
-              <Box as="span" color="blue.500">Location</Box>
-              <Box as="span" color="gray.300">|</Box>
-              <Box as="span" color="blue.500">Specialty</Box>
-              <Box as="span" color="gray.300">|</Box>
-              <Box as="span" color="blue.500">Rating</Box>
-              <Box as="span" color="gray.300">|</Box>
-              <Box as="span" color="blue.500">Price Range</Box>
+              <Box as="span" color="brown.300" cursor="pointer" _hover={{ textDecoration: "underline" }}>Location</Box>
+              <Box as="span" color="gray.600">|</Box>
+              <Box as="span" color="brown.300" cursor="pointer" _hover={{ textDecoration: "underline" }}>Specialty</Box>
+              <Box as="span" color="gray.600">|</Box>
+              <Box as="span" color="brown.300" cursor="pointer" _hover={{ textDecoration: "underline" }}>Rating</Box>
+              <Box as="span" color="gray.600">|</Box>
+              <Box as="span" color="brown.300" cursor="pointer" _hover={{ textDecoration: "underline" }}>Price Range</Box>
             </Text>
           </VStack>
         </Container>
@@ -341,7 +378,7 @@ export default function Home() {
               </InputGroup>
               <Text
                 fontSize="sm"
-                color="white"
+                color="gray.600"
                 mt={2}
                 textAlign="center"
                 opacity={0.8}
@@ -370,7 +407,7 @@ export default function Home() {
             <Heading
               as="h1"
               size={{ base: "3xl", md: "4xl" }}
-              color="white"
+              color="gray.800"
               mb={0}
               textShadow="2px 2px 4px rgba(0,0,0,0.3)"
               maxW="800px"
@@ -384,7 +421,7 @@ export default function Home() {
 
             <Text
               fontSize={{ base: "lg", md: "xl" }}
-              color="white"
+              color="gray.600"
               maxW="800px"
               mb={0}
               textShadow="1px 1px 2px rgba(0,0,0,0.3)"
@@ -409,9 +446,9 @@ export default function Home() {
                 leftIcon={<Icon as={FaHome} />}
                 colorScheme="blue"
                 variant="outline"
-                borderColor="white"
-                color="white"
-                _hover={{ bg: "white", color: "blue.500" }}
+                borderColor="gray.800"
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
               >
                 Home Services
               </Button>
@@ -419,9 +456,9 @@ export default function Home() {
                 leftIcon={<Icon as={FaBuilding} />}
                 colorScheme="blue"
                 variant="outline"
-                borderColor="white"
-                color="white"
-                _hover={{ bg: "white", color: "blue.500" }}
+                borderColor="gray.800"
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
               >
                 Commercial
               </Button>
@@ -429,9 +466,9 @@ export default function Home() {
                 leftIcon={<Icon as={FaTools} />}
                 colorScheme="blue"
                 variant="outline"
-                borderColor="white"
-                color="white"
-                _hover={{ bg: "white", color: "blue.500" }}
+                borderColor="gray.800"
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
               >
                 Repairs
               </Button>
@@ -439,9 +476,9 @@ export default function Home() {
                 leftIcon={<Icon as={FaPaintRoller} />}
                 colorScheme="blue"
                 variant="outline"
-                borderColor="white"
-                color="white"
-                _hover={{ bg: "white", color: "blue.500" }}
+                borderColor="gray.800"
+                color="gray.800"
+                _hover={{ bg: "gray.800", color: "white" }}
               >
                 Renovations
               </Button>
