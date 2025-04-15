@@ -1,7 +1,7 @@
 'use client'
 
-import { Box, Container, Heading, Text, SimpleGrid, VStack, Icon, Flex, Image, Button, useColorModeValue, Grid, GridItem, AspectRatio, Divider, Stack, Badge } from '@chakra-ui/react'
-import { FaShieldAlt, FaHandshake, FaTools, FaHome, FaUserTie, FaCheckCircle, FaLock, FaHardHat, FaBuilding, FaCertificate, FaMedal } from 'react-icons/fa'
+import { Box, Container, Heading, Text, SimpleGrid, VStack, Icon, Flex, Image, Button, useColorModeValue, Grid, GridItem, AspectRatio, Divider, Stack, Badge, InputGroup, InputLeftElement, Input, InputRightElement } from '@chakra-ui/react'
+import { FaShieldAlt, FaHandshake, FaTools, FaHome, FaUserTie, FaCheckCircle, FaLock, FaHardHat, FaBuilding, FaCertificate, FaMedal, FaHammer, FaPaintRoller, FaWrench, FaSearch } from 'react-icons/fa'
 import Navbar from '@/components/Navbar'
 
 const heritageStats = [
@@ -135,6 +135,40 @@ export default function Company() {
             bgGradient="linear(to-b, rgba(0,0,0,0.1), rgba(0,0,0,0.5))"
           />
 
+          {/* Decorative Elements */}
+          <Box
+            position="absolute"
+            top="10%"
+            left="5%"
+            transform="rotate(-15deg)"
+          >
+            <Icon as={FaTools} color="white" opacity={0.2} boxSize={12} />
+          </Box>
+          <Box
+            position="absolute"
+            top="20%"
+            right="5%"
+            transform="rotate(15deg)"
+          >
+            <Icon as={FaHammer} color="white" opacity={0.2} boxSize={12} />
+          </Box>
+          <Box
+            position="absolute"
+            bottom="10%"
+            left="10%"
+            transform="rotate(15deg)"
+          >
+            <Icon as={FaPaintRoller} color="white" opacity={0.2} boxSize={12} />
+          </Box>
+          <Box
+            position="absolute"
+            bottom="20%"
+            right="10%"
+            transform="rotate(-15deg)"
+          >
+            <Icon as={FaWrench} color="white" opacity={0.2} boxSize={12} />
+          </Box>
+
           {/* Content */}
           <Box
             position="relative"
@@ -147,6 +181,53 @@ export default function Company() {
             px={8}
             py={0}
           >
+            {/* Directory-style Search Box */}
+            <Box
+              w="full"
+              maxW="600px"
+              mb={8}
+              position="relative"
+            >
+              <InputGroup size="lg">
+                <InputLeftElement pointerEvents="none">
+                  <Icon as={FaSearch} color="gray.400" />
+                </InputLeftElement>
+                <Input
+                  placeholder="Search for contractors in your area..."
+                  bg="white"
+                  borderRadius="full"
+                  border="2px solid"
+                  borderColor="blue.200"
+                  _focus={{
+                    borderColor: "blue.400",
+                    boxShadow: "0 0 0 2px rgba(66, 153, 225, 0.2)"
+                  }}
+                  _hover={{
+                    borderColor: "blue.300"
+                  }}
+                />
+                <InputRightElement width="4.5rem">
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    colorScheme="blue"
+                    borderRadius="full"
+                  >
+                    Find
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <Text
+                fontSize="sm"
+                color="white"
+                mt={2}
+                textAlign="center"
+                opacity={0.8}
+              >
+                Browse by: Location | Specialty | Rating | Price Range
+              </Text>
+            </Box>
+
             <Badge
               colorScheme="blue"
               fontSize={{ base: "sm", md: "md" }}
@@ -193,6 +274,56 @@ export default function Company() {
             >
               Since 2010, we've been the trusted bridge between homeowners and skilled contractors. Our secure escrow platform ensures your peace of mind, every step of the way. We understand that home improvement projects are significant investments, which is why we've built a system that prioritizes transparency, security, and quality workmanship. From initial consultation to final payment, we're here to make your renovation journey smooth and worry-free.
             </Text>
+
+            {/* Quick Links */}
+            <SimpleGrid
+              columns={{ base: 2, md: 4 }}
+              spacing={4}
+              mt={8}
+              w="full"
+              maxW="800px"
+            >
+              <Button
+                leftIcon={<Icon as={FaHome} />}
+                colorScheme="blue"
+                variant="outline"
+                borderColor="white"
+                color="white"
+                _hover={{ bg: "white", color: "blue.500" }}
+              >
+                Home Services
+              </Button>
+              <Button
+                leftIcon={<Icon as={FaBuilding} />}
+                colorScheme="blue"
+                variant="outline"
+                borderColor="white"
+                color="white"
+                _hover={{ bg: "white", color: "blue.500" }}
+              >
+                Commercial
+              </Button>
+              <Button
+                leftIcon={<Icon as={FaTools} />}
+                colorScheme="blue"
+                variant="outline"
+                borderColor="white"
+                color="white"
+                _hover={{ bg: "white", color: "blue.500" }}
+              >
+                Repairs
+              </Button>
+              <Button
+                leftIcon={<Icon as={FaPaintRoller} />}
+                colorScheme="blue"
+                variant="outline"
+                borderColor="white"
+                color="white"
+                _hover={{ bg: "white", color: "blue.500" }}
+              >
+                Renovations
+              </Button>
+            </SimpleGrid>
           </Box>
         </Box>
 
