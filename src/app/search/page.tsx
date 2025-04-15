@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense } from 'react'
+import React from 'react'
 import { Box, Container, Text, VStack, HStack, Flex, Image, Link, Icon, Divider, Button, Input, InputGroup, InputRightElement, IconButton } from '@chakra-ui/react'
 import { FaSearch, FaStar, FaMapMarkerAlt, FaPhone, FaGlobe, FaRegClock, FaRegComment } from 'react-icons/fa'
 import { useSearchParams } from 'next/navigation'
@@ -212,9 +212,7 @@ export default function SearchPage() {
   return (
     <>
       <Navbar />
-      <Suspense fallback={<Box minH="100vh" bg="white" pt={20}><Container maxW="container.lg"><Text>Loading search results...</Text></Container></Box>}>
-        <SearchContent />
-      </Suspense>
+      <SearchContent />
     </>
   )
 }
