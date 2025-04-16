@@ -12,12 +12,13 @@ import { Icon } from '@chakra-ui/react'
 
 export default function Home() {
   const router = useRouter()
-  const [searchQuery, setSearchQuery] = useState('')
-  const bgColor = useColorModeValue('gray.50', 'gray.900')
-  const cardBgColor = useColorModeValue('white', 'gray.800')
-  const textColor = useColorModeValue('gray.600', 'gray.300')
-  const iconBgColor = useColorModeValue('blue.50', 'blue.900')
-  const iconColor = useColorModeValue('blue.500', 'blue.300')
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const cardBgColor = "white";
+  const iconColor = "blue.500";
+  const iconBgColor = "blue.50";
+  const textColor = "gray.600";
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -69,7 +70,7 @@ export default function Home() {
     <>
       <Navbar />
       {/* eBay-style Hero Section */}
-      <Box bg={bgColor} py={4} borderBottom="1px" borderColor="gray.200">
+      <Box bg={cardBgColor} py={4} borderBottom="1px" borderColor="gray.200">
         <Container maxW="container.xl">
           <Flex direction={{ base: 'column', md: 'row' }} align="stretch" gap={10}>
             {/* Left: Carousel */}
@@ -361,19 +362,19 @@ export default function Home() {
 
       {/* Dynamic Sections as Carousels */}
       <Container maxW="container.xl" py={12}>
-        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Featured" products={featuredProducts} cardBgColor={cardBgColor} />
         </Box>
         <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Recommended for You" products={recommendedProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Top Liked" products={topLikedProducts} cardBgColor={cardBgColor} />
         </Box>
         <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Best Sellers" products={bestSellers} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="High Rated" products={highRatedProducts} cardBgColor={cardBgColor} />
         </Box>
         {/* News Section */}
