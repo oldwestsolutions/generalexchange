@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Box, Container, Heading, Text, VStack, Button, Input, InputGroup, InputRightElement, IconButton, Flex, Link, HStack, Badge, SimpleGrid, InputLeftElement } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, VStack, Button, Input, InputGroup, InputRightElement, IconButton, Flex, Link, HStack, Badge, SimpleGrid, InputLeftElement, useColorModeValue } from '@chakra-ui/react'
 import { FaSearch, FaTools, FaHammer, FaPaintRoller, FaWrench, FaHome, FaBuilding, FaChevronLeft, FaChevronRight, FaShieldAlt, FaExclamationTriangle, FaFire, FaStar, FaMedal, FaCrown, FaCoins, FaHandshake, FaNetworkWired, FaUsers, FaChartLine, FaNewspaper, FaBolt, FaTree, FaTemperatureHigh } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -13,6 +13,11 @@ import { Icon } from '@chakra-ui/react'
 export default function Home() {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
+  const bgColor = useColorModeValue('gray.50', 'gray.900')
+  const cardBgColor = useColorModeValue('white', 'gray.800')
+  const textColor = useColorModeValue('gray.600', 'gray.300')
+  const iconBgColor = useColorModeValue('blue.50', 'blue.900')
+  const iconColor = useColorModeValue('blue.500', 'blue.300')
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -64,7 +69,7 @@ export default function Home() {
     <>
       <Navbar />
       {/* eBay-style Hero Section */}
-      <Box bg="white" py={4} borderBottom="1px" borderColor="gray.200">
+      <Box bg={bgColor} py={4} borderBottom="1px" borderColor="gray.200">
         <Container maxW="container.xl">
           <Flex direction={{ base: 'column', md: 'row' }} align="stretch" gap={10}>
             {/* Left: Carousel */}
@@ -77,7 +82,7 @@ export default function Home() {
                 <Text fontSize={{ base: 'xl', md: '2xl' }} color="gray.800" fontWeight="bold" mb={2}>
                   Find the right contractor for your next project
                 </Text>
-                <Text color="gray.600" fontSize={{ base: 'md', md: 'lg' }}>
+                <Text color={textColor} fontSize={{ base: 'md', md: 'lg' }}>
                   Post your project, get free quotes, and hire with confidence. All payments are protected by escrow.
                 </Text>
               </Box>
@@ -85,19 +90,24 @@ export default function Home() {
               <Box w="full">
                 <form onSubmit={handleSearch} style={{ width: '100%' }}>
                   <InputGroup size={{ base: "md", md: "lg" }}>
+                    <InputLeftElement pointerEvents="none">
+                      <Icon as={FaSearch} color={textColor} />
+                    </InputLeftElement>
                     <Input
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search for contractors, services, or products..."
                       borderRadius="full"
-                      borderColor="gray.300"
+                      bg={cardBgColor}
+                      _focus={{
+                        borderColor: "blue.400",
+                        boxShadow: "0 0 0 1px blue.400"
+                      }}
                       _hover={{ borderColor: 'gray.400' }}
-                      _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px #3182ce' }}
                       fontSize={{ base: "md", md: "lg" }}
                       py={{ base: 4, md: 6 }}
                       px={{ base: 6, md: 8 }}
                       color="gray.800"
-                      bg="white"
                       _placeholder={{ color: 'gray.400' }}
                     />
                     <InputRightElement h="full" pr={0}>
@@ -126,7 +136,7 @@ export default function Home() {
                 mx="auto" 
                 mb={0} 
                 position="relative" 
-                bg="gray.50" 
+                bg={cardBgColor} 
                 borderRadius="2xl" 
                 boxShadow="lg" 
                 border="1.5px solid #e2e8f0" 
@@ -168,7 +178,7 @@ export default function Home() {
                     href="/news/market-trends" 
                     p={4} 
                     borderRadius="xl" 
-                    bg="white" 
+                    bg={cardBgColor} 
                     boxShadow="sm" 
                     _hover={{ 
                       transform: 'translateY(-4px)', 
@@ -191,19 +201,19 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg="blue.50" 
+                      bg={iconBgColor} 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
                     />
-                    <Icon as={FaChartLine} color="blue.500" boxSize={6} mb={3} />
+                    <Icon as={FaChartLine} color={iconColor} boxSize={6} mb={3} />
                     <Heading as="h3" fontSize="lg" color="blue.600" mb={3}>
                       Market Trends
                     </Heading>
                     <VStack align="center" spacing={2.5} w="full">
                       <Text fontSize="sm" color="blue.600" fontWeight="semibold" lineHeight="tall">Home Values Up 5.2%</Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight="tall">Local market shows steady growth</Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight="tall">Best time to invest in improvements</Text>
+                      <Text fontSize="sm" color={textColor} lineHeight="tall">Local market shows steady growth</Text>
+                      <Text fontSize="sm" color={textColor} lineHeight="tall">Best time to invest in improvements</Text>
                     </VStack>
                   </Box>
 
@@ -213,7 +223,7 @@ export default function Home() {
                     href="/news/renovation-tips" 
                     p={4} 
                     borderRadius="xl" 
-                    bg="white" 
+                    bg={cardBgColor} 
                     boxShadow="sm" 
                     _hover={{ 
                       transform: 'translateY(-4px)', 
@@ -236,19 +246,19 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg="green.50" 
+                      bg={iconBgColor} 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
                     />
-                    <Icon as={FaTools} color="green.500" boxSize={6} mb={3} />
+                    <Icon as={FaTools} color={iconColor} boxSize={6} mb={3} />
                     <Heading as="h3" fontSize="lg" color="green.600" mb={3}>
                       Renovation Tips
                     </Heading>
                     <VStack align="center" spacing={2.5} w="full">
                       <Text fontSize="sm" color="green.600" fontWeight="semibold" lineHeight="tall">ROI Guide 2024</Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight="tall">Top projects for value increase</Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight="tall">Expert advice for homeowners</Text>
+                      <Text fontSize="sm" color={textColor} lineHeight="tall">Top projects for value increase</Text>
+                      <Text fontSize="sm" color={textColor} lineHeight="tall">Expert advice for homeowners</Text>
                     </VStack>
                   </Box>
 
@@ -258,7 +268,7 @@ export default function Home() {
                     href="/news/investment" 
                     p={4} 
                     borderRadius="xl" 
-                    bg="white" 
+                    bg={cardBgColor} 
                     boxShadow="sm" 
                     _hover={{ 
                       transform: 'translateY(-4px)', 
@@ -281,19 +291,19 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg="purple.50" 
+                      bg={iconBgColor} 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
                     />
-                    <Icon as={FaCoins} color="purple.500" boxSize={6} mb={3} />
+                    <Icon as={FaCoins} color={iconColor} boxSize={6} mb={3} />
                     <Heading as="h3" fontSize="lg" color="purple.600" mb={3}>
                       Investment News
                     </Heading>
                     <VStack align="center" spacing={2.5} w="full">
                       <Text fontSize="sm" color="purple.600" fontWeight="semibold" lineHeight="tall">Smart Home ROI</Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight="tall">Tech upgrades that pay off</Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight="tall">Future-proof your home</Text>
+                      <Text fontSize="sm" color={textColor} lineHeight="tall">Tech upgrades that pay off</Text>
+                      <Text fontSize="sm" color={textColor} lineHeight="tall">Future-proof your home</Text>
                     </VStack>
                   </Box>
                 </SimpleGrid>
@@ -351,20 +361,20 @@ export default function Home() {
 
       {/* Dynamic Sections as Carousels */}
       <Container maxW="container.xl" py={12}>
-        <Box py={8} bg="gray.50" borderRadius="2xl" mb={10} boxShadow="sm">
-          <SectionCarousel title="Featured" products={featuredProducts} />
+        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+          <SectionCarousel title="Featured" products={featuredProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
-          <SectionCarousel title="Recommended for You" products={recommendedProducts} />
+        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+          <SectionCarousel title="Recommended for You" products={recommendedProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg="gray.50" borderRadius="2xl" mb={10} boxShadow="sm">
-          <SectionCarousel title="Top Liked" products={topLikedProducts} />
+        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+          <SectionCarousel title="Top Liked" products={topLikedProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
-          <SectionCarousel title="Best Sellers" products={bestSellers} />
+        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+          <SectionCarousel title="Best Sellers" products={bestSellers} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg="gray.50" borderRadius="2xl" mb={10} boxShadow="sm">
-          <SectionCarousel title="High Rated" products={highRatedProducts} />
+        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+          <SectionCarousel title="High Rated" products={highRatedProducts} cardBgColor={cardBgColor} />
         </Box>
         {/* News Section */}
         <Box mb={12}>
@@ -373,7 +383,7 @@ export default function Home() {
           </Heading>
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
             <Box
-              bg="white"
+              bg={cardBgColor}
               p={6}
               borderRadius="xl"
               boxShadow="md"
@@ -392,25 +402,25 @@ export default function Home() {
                   w="60px"
                   h="60px"
                   borderRadius="full"
-                  bg="blue.50"
+                  bg={iconBgColor}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
                   mb={4}
                 >
-                  <Icon as={FaChartLine} boxSize={6} color="blue.500" />
+                  <Icon as={FaChartLine} boxSize={6} color={iconColor} />
                 </Box>
                 <Heading size="md" mb={2}>
                   Market Trends
                 </Heading>
-                <Text color="gray.600">
+                <Text color={textColor}>
                   Home values up 5.2% • Local market growth • Investment timing
                 </Text>
               </Flex>
             </Box>
 
             <Box
-              bg="white"
+              bg={cardBgColor}
               p={6}
               borderRadius="xl"
               boxShadow="md"
@@ -429,25 +439,25 @@ export default function Home() {
                   w="60px"
                   h="60px"
                   borderRadius="full"
-                  bg="blue.50"
+                  bg={iconBgColor}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
                   mb={4}
                 >
-                  <Icon as={FaNewspaper} boxSize={6} color="blue.500" />
+                  <Icon as={FaNewspaper} boxSize={6} color={iconColor} />
                 </Box>
                 <Heading size="md" mb={2}>
                   Renovation Tips
                 </Heading>
-                <Text color="gray.600">
+                <Text color={textColor}>
                   ROI Guide 2024 • Value-increasing projects • Expert advice
                 </Text>
               </Flex>
             </Box>
 
             <Box
-              bg="white"
+              bg={cardBgColor}
               p={6}
               borderRadius="xl"
               boxShadow="md"
@@ -466,18 +476,18 @@ export default function Home() {
                   w="60px"
                   h="60px"
                   borderRadius="full"
-                  bg="blue.50"
+                  bg={iconBgColor}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
                   mb={4}
                 >
-                  <Icon as={FaChartLine} boxSize={6} color="blue.500" />
+                  <Icon as={FaChartLine} boxSize={6} color={iconColor} />
                 </Box>
                 <Heading size="md" mb={2}>
                   Investment News
                 </Heading>
-                <Text color="gray.600">
+                <Text color={textColor}>
                   Smart Home ROI • Tech upgrade benefits • Future-proofing tips
                 </Text>
               </Flex>
@@ -494,7 +504,13 @@ const SectionHeading = (props: any) => (
   <Heading size="xl" mb={8} color="gray.800" letterSpacing="-1px" {...props} />
 )
 
-const SectionCarousel = ({ title, products }: { title: string, products: any[] }) => (
+interface SectionCarouselProps {
+  title: string;
+  products: any[];
+  cardBgColor: string;
+}
+
+const SectionCarousel: React.FC<SectionCarouselProps> = ({ title, products, cardBgColor }) => (
   <Box mb={6}>
     <Flex align="center" justify="space-between" mb={6}>
       <Heading size="lg" color="gray.800">{title}</Heading>
@@ -507,7 +523,7 @@ const SectionCarousel = ({ title, products }: { title: string, products: any[] }
             key={idx} 
             minW="280px" 
             maxW="280px" 
-            bg="white" 
+            bg={cardBgColor} 
             boxShadow="md" 
             borderRadius="xl" 
             p={6} 
