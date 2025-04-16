@@ -8,10 +8,16 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'General Exchange',
-  description: 'Your trusted marketplace for home improvement',
+  description: 'Find trusted contractors and services for your home improvement needs',
   icons: {
-    icon: '/carraigetrans.jpeg',
-    apple: '/carraigetrans.jpeg',
+    icon: [
+      { url: '/carriage.jpeg', type: 'image/jpeg' },
+      { url: '/carriage.jpeg', sizes: '32x32', type: 'image/jpeg' },
+      { url: '/carriage.jpeg', sizes: '16x16', type: 'image/jpeg' }
+    ],
+    apple: [
+      { url: '/carriage.jpeg', sizes: '180x180', type: 'image/jpeg' }
+    ]
   },
 }
 
@@ -30,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/jpeg" href="/carriage.jpeg" />
         <meta name="theme-color" content="#3182CE" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
