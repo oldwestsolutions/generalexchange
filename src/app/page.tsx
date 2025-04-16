@@ -377,14 +377,12 @@ export default function Home() {
           <SectionCarousel title="High Rated" products={highRatedProducts} cardBgColor={cardBgColor} />
         </Box>
         {/* News Section */}
-        <Box mb={12}>
-          <Heading size="lg" mb={6}>
-            Homeowner & Real Estate News
-          </Heading>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+          <Heading size="lg" mb={6} textAlign="center">Latest News</Heading>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={4}>
             <Box
               bg={cardBgColor}
-              p={6}
+              p={4}
               borderRadius="xl"
               boxShadow="md"
               _hover={{
@@ -399,21 +397,21 @@ export default function Home() {
             >
               <Flex direction="column" align="center" textAlign="center">
                 <Box
-                  w="60px"
-                  h="60px"
+                  w="50px"
+                  h="50px"
                   borderRadius="full"
                   bg={iconBgColor}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  mb={4}
+                  mb={3}
                 >
-                  <Icon as={FaChartLine} boxSize={6} color={iconColor} />
+                  <Icon as={FaChartLine} boxSize={5} color={iconColor} />
                 </Box>
-                <Heading size="md" mb={2}>
+                <Heading size="sm" mb={2}>
                   Market Trends
                 </Heading>
-                <Text color={textColor}>
+                <Text color={textColor} fontSize="sm">
                   Home values up 5.2% • Local market growth • Investment timing
                 </Text>
               </Flex>
@@ -421,7 +419,7 @@ export default function Home() {
 
             <Box
               bg={cardBgColor}
-              p={6}
+              p={4}
               borderRadius="xl"
               boxShadow="md"
               _hover={{
@@ -436,21 +434,21 @@ export default function Home() {
             >
               <Flex direction="column" align="center" textAlign="center">
                 <Box
-                  w="60px"
-                  h="60px"
+                  w="50px"
+                  h="50px"
                   borderRadius="full"
                   bg={iconBgColor}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  mb={4}
+                  mb={3}
                 >
-                  <Icon as={FaNewspaper} boxSize={6} color={iconColor} />
+                  <Icon as={FaHome} boxSize={5} color={iconColor} />
                 </Box>
-                <Heading size="md" mb={2}>
+                <Heading size="sm" mb={2}>
                   Renovation Tips
                 </Heading>
-                <Text color={textColor}>
+                <Text color={textColor} fontSize="sm">
                   ROI Guide 2024 • Value-increasing projects • Expert advice
                 </Text>
               </Flex>
@@ -458,7 +456,7 @@ export default function Home() {
 
             <Box
               bg={cardBgColor}
-              p={6}
+              p={4}
               borderRadius="xl"
               boxShadow="md"
               _hover={{
@@ -473,21 +471,21 @@ export default function Home() {
             >
               <Flex direction="column" align="center" textAlign="center">
                 <Box
-                  w="60px"
-                  h="60px"
+                  w="50px"
+                  h="50px"
                   borderRadius="full"
                   bg={iconBgColor}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  mb={4}
+                  mb={3}
                 >
-                  <Icon as={FaChartLine} boxSize={6} color={iconColor} />
+                  <Icon as={FaChartLine} boxSize={5} color={iconColor} />
                 </Box>
-                <Heading size="md" mb={2}>
+                <Heading size="sm" mb={2}>
                   Investment News
                 </Heading>
-                <Text color={textColor}>
+                <Text color={textColor} fontSize="sm">
                   Smart Home ROI • Tech upgrade benefits • Future-proofing tips
                 </Text>
               </Flex>
@@ -536,26 +534,14 @@ const SectionCarousel: React.FC<SectionCarouselProps> = ({ title, products, card
             }} 
             transition="all 0.2s"
           >
-            <Box 
-              position="relative" 
-              width="200px" 
-              height="200px" 
-              mx="auto" 
-              mb={4}
-              borderRadius="lg"
-              overflow="hidden"
-              bg="gray.50"
-            >
-              <Image 
-                src={product.image} 
-                alt={product.name} 
+            <Box position="relative" w="full" h="200px" mb={4}>
+              <Image
+                src={product.image}
+                alt={product.name}
                 fill
-                sizes="(max-width: 768px) 200px, 200px"
-                priority={idx === 0}
-                style={{ 
-                  objectFit: 'cover',
-                  borderRadius: '8px'
-                }} 
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={idx < 2}
               />
             </Box>
             <VStack spacing={2} align="center">
@@ -605,25 +591,25 @@ const featuredProducts = [
     name: 'Smart Thermostat', 
     category: 'Electronics', 
     price: 199.99, 
-    image: 'https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?auto=format&fit=crop&w=600&q=80' // Modern smart thermostat
+    image: '/images/thermostat.jpg'
   },
   { 
     name: 'Rainfall Shower', 
     category: 'Home Improvement', 
     price: 299.99, 
-    image: 'https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80' // Modern rainfall shower
+    image: '/images/shower.jpg'
   },
   { 
     name: 'LED Ceiling Fan', 
     category: 'Lighting', 
     price: 149.99, 
-    image: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=600&q=80' // Modern ceiling fan
+    image: '/images/fan.jpg'
   },
   { 
     name: 'Cordless Drill', 
     category: 'Tools', 
     price: 89.99, 
-    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80' // Professional cordless drill
+    image: '/images/drill.jpg'
   },
 ]
 const recommendedProducts = [
