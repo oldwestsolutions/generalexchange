@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Box, Container, Heading, Text, VStack, Button, Input, InputGroup, InputRightElement, IconButton, Flex, Link, HStack, Badge, SimpleGrid, InputLeftElement } from '@chakra-ui/react'
-import { FaSearch, FaTools, FaHammer, FaPaintRoller, FaWrench, FaHome, FaBuilding, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaSearch, FaTools, FaHammer, FaPaintRoller, FaWrench, FaHome, FaBuilding, FaChevronLeft, FaChevronRight, FaShieldAlt, FaExclamationTriangle, FaFire, FaStar, FaMedal, FaCrown, FaCoins, FaHandshake, FaNetworkWired, FaUsers, FaChartLine, FaNewspaper } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -74,25 +74,39 @@ export default function Home() {
                         fontSize={{ base: "md", md: "lg" }}
                         borderLeftRadius={0}
                       >
-                        <Box as={FaSearch} fontSize={{ base: "18px", md: "24px" }} />
+                        <Icon as={FaSearch} fontSize={{ base: "18px", md: "24px" }} color="white" />
                       </Button>
                     </InputRightElement>
                   </InputGroup>
                 </form>
               </Box>
-              {/* Featured Products Mini-Grid */}
+              {/* Homeowner & Real Estate News */}
               <Box>
-                <Text fontWeight="semibold" color="gray.700" mb={2} fontSize="lg">Featured Products</Text>
+                <Text fontWeight="semibold" color="gray.700" mb={2} fontSize="lg">Homeowner News</Text>
                 <SimpleGrid columns={{ base: 2, sm: 3 }} spacing={3} mb={2}>
-                  {featuredProducts.slice(0, 3).map((product, idx) => (
-                    <Box key={idx} bg="gray.50" borderRadius="lg" boxShadow="sm" p={2} textAlign="center">
-                      <Image src={product.image} alt={product.name} width={60} height={60} style={{ objectFit: 'contain', margin: '0 auto' }} />
-                      <Text fontSize="sm" fontWeight="bold" mt={1}>{product.name}</Text>
-                      <Text color="orange.500" fontWeight="bold" fontSize="sm">${product.price}</Text>
-                    </Box>
-                  ))}
+                  <Box bg="blue.50" borderRadius="lg" boxShadow="sm" p={4} textAlign="center">
+                    <Icon as={FaHome} color="blue.500" boxSize={6} mb={2} />
+                    <Text fontSize="sm" fontWeight="bold" color="blue.700">Market Trends</Text>
+                    <Text color="blue.600" fontWeight="bold" fontSize="sm">Home Values Up 5.2%</Text>
+                    <Text fontSize="xs" color="gray.600" mt={1}>Local market shows steady growth</Text>
+                    <Text fontSize="xs" color="gray.500" mt={1}>Best time to invest in improvements</Text>
+                  </Box>
+                  <Box bg="purple.50" borderRadius="lg" boxShadow="sm" p={4} textAlign="center">
+                    <Icon as={FaBuilding} color="purple.500" boxSize={6} mb={2} />
+                    <Text fontSize="sm" fontWeight="bold" color="purple.700">Renovation Tips</Text>
+                    <Text color="purple.600" fontWeight="bold" fontSize="sm">ROI Guide 2024</Text>
+                    <Text fontSize="xs" color="gray.600" mt={1}>Top projects for value increase</Text>
+                    <Text fontSize="xs" color="gray.500" mt={1}>Expert advice for homeowners</Text>
+                  </Box>
+                  <Box bg="orange.50" borderRadius="lg" boxShadow="sm" p={4} textAlign="center">
+                    <Icon as={FaChartLine} color="orange.500" boxSize={6} mb={2} />
+                    <Text fontSize="sm" fontWeight="bold" color="orange.700">Investment News</Text>
+                    <Text color="orange.600" fontWeight="bold" fontSize="sm">Smart Home ROI</Text>
+                    <Text fontSize="xs" color="gray.600" mt={1}>Tech upgrades that pay off</Text>
+                    <Text fontSize="xs" color="gray.500" mt={1}>Future-proof your home</Text>
+                  </Box>
                 </SimpleGrid>
-                <Button as={NextLink} href="#featured" colorScheme="blue" size="sm" borderRadius="full" fontWeight="bold" w="full">See More</Button>
+                <Button as={NextLink} href="/news" colorScheme="blue" size="sm" borderRadius="full" fontWeight="bold" w="full" leftIcon={<Icon as={FaNewspaper} />}>Read More News</Button>
               </Box>
             </VStack>
           </Flex>
@@ -229,57 +243,57 @@ const heroSlides = [
     description: 'Connect with licensed, vetted professionals for any home project. Get started in minutes!',
     cta: 'Find a Contractor',
     ctaLink: '/search?type=contractor',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', // general contractor
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80', // Modern home exterior
   },
   {
-    headline: 'Plumbing Services',
-    description: 'Leaky faucet or major pipe repair? Find top-rated plumbers near you.',
-    cta: 'Find Plumbers',
-    ctaLink: '/search?type=plumbing',
-    image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80',
+    headline: 'Kitchen Remodeling',
+    description: 'Transform your kitchen with expert design and craftsmanship. Get free quotes today.',
+    cta: 'Find Kitchen Pros',
+    ctaLink: '/search?type=kitchen',
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=600&q=80', // Modern kitchen
   },
   {
-    headline: 'Roofing Experts',
-    description: 'Protect your home with trusted roofing professionals. Get free quotes today.',
-    cta: 'Find Roofers',
-    ctaLink: '/search?type=roofing',
-    image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+    headline: 'Bathroom Renovation',
+    description: 'Create your dream bathroom with top-rated renovation specialists.',
+    cta: 'Find Bathroom Pros',
+    ctaLink: '/search?type=bathroom',
+    image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80', // Luxury bathroom
   },
   {
-    headline: 'Flooring Solutions',
-    description: 'Upgrade your space with beautiful, durable flooring. Compare local pros now.',
-    cta: 'Find Flooring Pros',
-    ctaLink: '/search?type=flooring',
-    image: 'https://images.unsplash.com/photo-1503389152951-9c3d8b6e9c94?auto=format&fit=crop&w=600&q=80',
+    headline: 'Home Office Setup',
+    description: 'Design and build the perfect home office for productivity and comfort.',
+    cta: 'Find Office Designers',
+    ctaLink: '/search?type=office',
+    image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=600&q=80', // Modern home office
   },
   {
-    headline: 'Electrical Services',
-    description: 'From rewiring to lighting, connect with licensed electricians for any job.',
-    cta: 'Find Electricians',
-    ctaLink: '/search?type=electrical',
-    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80',
+    headline: 'Outdoor Living',
+    description: 'Create beautiful outdoor spaces with expert landscaping and design.',
+    cta: 'Find Landscapers',
+    ctaLink: '/search?type=landscaping',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80', // Beautiful backyard
   },
   {
-    headline: 'Get Quotes Fast',
-    description: 'Post your project and receive free quotes from top-rated pros near you.',
-    cta: 'Post Your Project',
-    ctaLink: '/post-project',
-    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+    headline: 'Smart Home Upgrades',
+    description: 'Modernize your home with the latest smart technology and automation.',
+    cta: 'Find Smart Home Pros',
+    ctaLink: '/search?type=smart-home',
+    image: 'https://images.unsplash.com/photo-1558002038-1055eec2c2e7?auto=format&fit=crop&w=600&q=80', // Smart home technology
   },
   {
-    headline: 'Secure Escrow Payments',
-    description: 'Your money is protected until the job is done right. Pay only when satisfied.',
-    cta: 'Learn About Escrow',
-    ctaLink: '/company',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
+    headline: 'Energy Efficiency',
+    description: 'Save money and reduce your carbon footprint with energy-efficient upgrades.',
+    cta: 'Find Energy Experts',
+    ctaLink: '/search?type=energy',
+    image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=600&q=80', // Solar panels
   },
   {
-    headline: 'Top-Rated Service Pros',
-    description: 'Browse reviews and ratings to choose the best contractor for your needs.',
-    cta: 'Browse Pros',
-    ctaLink: '/search?sort=rating',
-    image: 'https://images.unsplash.com/photo-1515168833906-d2a3b82b302b?auto=format&fit=crop&w=600&q=80',
-  },
+    headline: 'Interior Design',
+    description: 'Transform your space with professional interior design services.',
+    cta: 'Find Designers',
+    ctaLink: '/search?type=interior-design',
+    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80', // Modern living room
+  }
 ]
 
 function HeroCarousel() {
@@ -288,7 +302,7 @@ function HeroCarousel() {
   const [progress, setProgress] = useState(0)
   const SLIDE_DURATION = 5000
   const FADE_DURATION = 800
-  // Smoother, slower fade transition and progress bar
+
   React.useEffect(() => {
     setFade(false)
     setProgress(0)
@@ -300,7 +314,7 @@ function HeroCarousel() {
         setFade(true)
       }, FADE_DURATION)
     }, SLIDE_DURATION)
-    // Progress bar animation
+
     let frame: number
     let start: number | null = null
     function animateProgress(ts: number) {
@@ -314,8 +328,9 @@ function HeroCarousel() {
     frame = requestAnimationFrame(animateProgress)
     return () => { clearInterval(timer); clearTimeout(fadeTimeout); cancelAnimationFrame(frame) }
   }, [index])
+
   const slide = heroSlides[index]
-  // Navigation handlers
+
   const goTo = (i: number) => {
     setFade(false)
     setTimeout(() => {
@@ -323,8 +338,27 @@ function HeroCarousel() {
       setFade(true)
     }, 80)
   }
+
   return (
-    <Box w="360px" h="440px" maxW="100%" mx="auto" mb={0} position="relative" bg="gray.50" borderRadius="2xl" boxShadow="lg" border="1.5px solid #e2e8f0" p={{ base: 6, md: 8 }} textAlign="center" display="flex" flexDirection="column" alignItems="center" justifyContent="center" transition="all 0.3s">
+    <Box 
+      w="360px" 
+      h="440px" 
+      maxW="100%" 
+      mx="auto" 
+      mb={0} 
+      position="relative" 
+      bg="gray.50" 
+      borderRadius="2xl" 
+      boxShadow="lg" 
+      border="1.5px solid #e2e8f0" 
+      p={{ base: 4, md: 6 }} 
+      textAlign="center" 
+      display="flex" 
+      flexDirection="column" 
+      alignItems="center" 
+      justifyContent="space-between"
+      transition="all 0.3s"
+    >
       {/* Left Arrow */}
       <IconButton
         aria-label="Previous"
@@ -333,7 +367,7 @@ function HeroCarousel() {
         variant="ghost"
         colorScheme="gray"
         position="absolute"
-        top="50%"
+        top="60%"
         left={2}
         transform="translateY(-50%)"
         zIndex={2}
@@ -350,7 +384,7 @@ function HeroCarousel() {
         variant="ghost"
         colorScheme="gray"
         position="absolute"
-        top="50%"
+        top="60%"
         right={2}
         transform="translateY(-50%)"
         zIndex={2}
@@ -359,39 +393,111 @@ function HeroCarousel() {
         _hover={{ opacity: 1, bg: 'gray.200' }}
         borderRadius="full"
       />
-      <Image
-        src={slide.image}
-        alt={slide.headline}
-        width={320}
-        height={180}
-        style={{
-          objectFit: 'cover',
-          borderRadius: '16px',
-          margin: '0 auto',
-          marginBottom: 28,
-          transition: 'opacity 0.8s',
-          opacity: fade ? 1 : 0
-        }}
-      />
-      <Box style={{ transition: 'opacity 0.8s', opacity: fade ? 1 : 0 }}>
-        <Text fontSize={{ base: '2xl', md: '3xl' }} fontWeight="extrabold" color="gray.800" mb={2}>
-          {slide.headline}
-        </Text>
-        <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" mb={4}>
-          {slide.description}
-        </Text>
-        <Button as={NextLink} href={slide.ctaLink} colorScheme="orange" size="sm" borderRadius="full" fontWeight="bold" px={5} py={2} fontSize="md">
+
+      {/* Image Container */}
+      <Box 
+        w="full" 
+        h="200px" 
+        position="relative" 
+        mb={4}
+        overflow="hidden"
+        borderRadius="xl"
+      >
+        <Image
+          src={slide.image}
+          alt={slide.headline}
+          fill
+          style={{
+            objectFit: 'cover',
+            transition: 'opacity 0.8s',
+            opacity: fade ? 1 : 0
+          }}
+        />
+      </Box>
+
+      {/* Content Container */}
+      <Box 
+        flex={1} 
+        display="flex" 
+        flexDirection="column" 
+        justifyContent="space-between"
+        w="full"
+        style={{ transition: 'opacity 0.8s', opacity: fade ? 1 : 0 }}
+      >
+        <Box>
+          <Text 
+            fontSize={{ base: 'xl', md: '2xl' }} 
+            fontWeight="extrabold" 
+            color="gray.800" 
+            mb={2}
+            noOfLines={2}
+          >
+            {slide.headline}
+          </Text>
+          <Text 
+            fontSize={{ base: 'sm', md: 'md' }} 
+            color="gray.600" 
+            mb={4}
+            noOfLines={2}
+          >
+            {slide.description}
+          </Text>
+        </Box>
+
+        <Button 
+          as={NextLink} 
+          href={slide.ctaLink} 
+          colorScheme="orange" 
+          size="sm" 
+          borderRadius="full" 
+          fontWeight="bold" 
+          px={5} 
+          py={2} 
+          fontSize="md"
+          mb={2}
+        >
           {slide.cta}
         </Button>
       </Box>
+
       {/* Progress Bar */}
-      <Box w="80%" h="2.5px" bg="gray.200" borderRadius="full" mt={5} mb={2} mx="auto" position="relative" overflow="hidden">
-        <Box h="full" bg="orange.400" borderRadius="full" transition="width 0.2s" style={{ width: `${progress * 100}%` }} />
+      <Box 
+        w="80%" 
+        h="2.5px" 
+        bg="gray.200" 
+        borderRadius="full" 
+        mt={2} 
+        mb={1} 
+        mx="auto" 
+        position="relative" 
+        overflow="hidden"
+      >
+        <Box 
+          h="full" 
+          bg="orange.400" 
+          borderRadius="full" 
+          transition="width 0.2s" 
+          style={{ width: `${progress * 100}%` }} 
+        />
       </Box>
+
       {/* Minimal Dots */}
-      <Flex position="absolute" bottom={4} left="50%" transform="translateX(-50%)" gap={1.5}>
+      <Flex 
+        position="absolute" 
+        bottom={2} 
+        left="50%" 
+        transform="translateX(-50%)" 
+        gap={1.5}
+      >
         {heroSlides.map((_, i) => (
-          <Box key={i} w={1.5} h={1.5} borderRadius="full" bg={i === index ? 'orange.400' : 'gray.200'} opacity={i === index ? 1 : 0.7} />
+          <Box 
+            key={i} 
+            w={1.5} 
+            h={1.5} 
+            borderRadius="full" 
+            bg={i === index ? 'orange.400' : 'gray.200'} 
+            opacity={i === index ? 1 : 0.7} 
+          />
         ))}
       </Flex>
     </Box>

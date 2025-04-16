@@ -47,7 +47,7 @@ export default function Navbar() {
                 color="gray.800"
                 letterSpacing="-0.5px"
                 fontFamily="'Cinzel', serif"
-                display={{ base: 'none', sm: 'block' }}
+                display="block"
               >
                 General Exchange
               </Text>
