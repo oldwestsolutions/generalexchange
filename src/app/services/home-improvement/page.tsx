@@ -73,12 +73,17 @@ export default function HomeImprovement() {
                 }}
                 transition="all 0.2s"
               >
-                <Box position="relative" h="200px">
+                <Box position="relative" w="full" h="200px" mb={4}>
                   <Image
                     src={service.image}
                     alt={service.title}
-                    fill
-                    style={{ objectFit: 'cover' }}
+                    width={200}
+                    height={200}
+                    style={{ 
+                      objectFit: 'cover',
+                      width: '100%',
+                      height: '100%'
+                    }}
                   />
                 </Box>
                 <Box p={6}>
