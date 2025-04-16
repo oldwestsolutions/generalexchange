@@ -362,137 +362,660 @@ export default function Home() {
         <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Featured" products={featuredProducts} cardBgColor={cardBgColor} />
         </Box>
+
+        {/* New Banner Section */}
+        <Box w="full" bg="white" py={6} mb={10}>
+          <Container maxW="container.xl">
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+              {/* Left Column */}
+              <Box
+                w="full"
+                h="220px"
+                bg="gray.100"
+                borderRadius="xl"
+                position="relative"
+                overflow="hidden"
+                boxShadow="lg"
+                _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
+                transition="all 0.3s"
+                cursor="pointer"
+              >
+                <Flex
+                  position="absolute"
+                  top="0"
+                  left="0"
+                  right="0"
+                  bottom="0"
+                  bg="purple.600"
+                  px={8}
+                  py={8}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  backgroundImage="linear-gradient(135deg, purple.600, purple.700)"
+                >
+                  <Box color="white" maxW="65%">
+                    <Heading size="lg" mb={4} display="flex" alignItems="center" gap={3}>
+                      <Icon as={FaTools} boxSize={6} />
+                      Quality Services
+                    </Heading>
+                    <Text fontSize="md" mb={4} lineHeight="tall">
+                      Find top-rated professionals for your next home project
+                    </Text>
+                    <Button
+                      size="md"
+                      colorScheme="whiteAlpha"
+                      _hover={{ bg: 'whiteAlpha.300' }}
+                      leftIcon={<Icon as={FaHammer} />}
+                    >
+                      Find Pros
+                    </Button>
+                  </Box>
+                  <Icon as={FaHome} color="white" boxSize={12} opacity={0.9} />
+                </Flex>
+              </Box>
+
+              {/* Right Column */}
+              <Box
+                w="full"
+                h="220px"
+                bg="gray.100"
+                borderRadius="xl"
+                position="relative"
+                overflow="hidden"
+                boxShadow="lg"
+                _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
+                transition="all 0.3s"
+                cursor="pointer"
+              >
+                <Flex
+                  position="absolute"
+                  top="0"
+                  left="0"
+                  right="0"
+                  bottom="0"
+                  bg="pink.600"
+                  px={8}
+                  py={8}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  backgroundImage="linear-gradient(135deg, pink.600, pink.700)"
+                >
+                  <Box color="white" maxW="65%">
+                    <Heading size="lg" mb={4} display="flex" alignItems="center" gap={3}>
+                      <Icon as={FaWrench} boxSize={6} />
+                      Home Projects
+                    </Heading>
+                    <Text fontSize="md" mb={4} lineHeight="tall">
+                      Expert solutions for all your home improvement needs
+                    </Text>
+                    <Button
+                      size="md"
+                      colorScheme="whiteAlpha"
+                      _hover={{ bg: 'whiteAlpha.300' }}
+                      leftIcon={<Icon as={FaTools} />}
+                    >
+                      Get Started
+                    </Button>
+                  </Box>
+                  <Icon as={FaBuilding} color="white" boxSize={12} opacity={0.9} />
+                </Flex>
+              </Box>
+            </SimpleGrid>
+          </Container>
+        </Box>
+
         <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Recommended for You" products={recommendedProducts} cardBgColor={cardBgColor} />
         </Box>
+
+        {/* Updated Trusted Network Banner */}
+        <Box w="full" bg="white" py={6} mb={10}>
+          <Container maxW="container.xl">
+            <Box
+              w="full"
+              h="220px"
+              bg="gray.100"
+              borderRadius="xl"
+              position="relative"
+              overflow="hidden"
+              boxShadow="lg"
+              _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
+              transition="all 0.3s"
+              cursor="pointer"
+            >
+              <Flex
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                bottom="0"
+                bg="blue.600"
+                px={12}
+                py={10}
+                alignItems="center"
+                justifyContent="space-between"
+                backgroundImage="linear-gradient(135deg, blue.600, blue.700)"
+              >
+                <Box color="white" maxW="55%">
+                  <Heading size="lg" mb={5} display="flex" alignItems="center" gap={3}>
+                    <Icon as={FaShieldAlt} boxSize={7} />
+                    Trusted Contractor Network
+                  </Heading>
+                  <Text fontSize="lg" mb={6} lineHeight="tall">
+                    Join our network of verified professionals. Get more leads, grow your business, and build your reputation.
+                  </Text>
+                  <Button
+                    size="lg"
+                    colorScheme="whiteAlpha"
+                    _hover={{ bg: 'whiteAlpha.300' }}
+                    leftIcon={<Icon as={FaHandshake} />}
+                  >
+                    Join Our Network
+                  </Button>
+                </Box>
+                <Flex direction="column" gap={6} alignItems="center" mr={4}>
+                  <Icon as={FaNetworkWired} color="white" boxSize={14} opacity={0.9} />
+                  <Icon as={FaUsers} color="white" boxSize={14} opacity={0.9} />
+                </Flex>
+              </Flex>
+            </Box>
+          </Container>
+        </Box>
+
         <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Top Liked" products={topLikedProducts} cardBgColor={cardBgColor} />
+        </Box>
+        <Box w="full" bg="white" py={6}>
+          <Container maxW="container.xl">
+            <Box
+              w="full"
+              h="200px"
+              bg="gray.100"
+              borderRadius="xl"
+              position="relative"
+              overflow="hidden"
+              boxShadow="md"
+              _hover={{ boxShadow: 'lg' }}
+              transition="all 0.3s"
+              cursor="pointer"
+            >
+              <Flex
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                bottom="0"
+                bg="green.600"
+                p={8}
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Box color="white" maxW="60%">
+                  <Heading size="lg" mb={4}>
+                    Home Improvement Made Easy
+                  </Heading>
+                  <Text fontSize="xl" mb={6}>
+                    Get instant quotes from top-rated contractors in your area
+                  </Text>
+                  <Button
+                    size="lg"
+                    colorScheme="white"
+                    variant="outline"
+                    _hover={{ bg: 'whiteAlpha.200' }}
+                  >
+                    Get Started
+                  </Button>
+                </Box>
+                <Icon as={FaHome} color="white" boxSize={24} opacity={0.9} />
+              </Flex>
+            </Box>
+          </Container>
         </Box>
         <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Best Sellers" products={bestSellers} cardBgColor={cardBgColor} />
         </Box>
+
+        {/* Two Column Section */}
+        <Box w="full" bg="white" py={6} mb={10}>
+          <Container maxW="container.xl">
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+              {/* Left Column */}
+              <Box
+                w="full"
+                h="220px"
+                bg="gray.100"
+                borderRadius="xl"
+                position="relative"
+                overflow="hidden"
+                boxShadow="lg"
+                _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
+                transition="all 0.3s"
+                cursor="pointer"
+              >
+                <Flex
+                  position="absolute"
+                  top="0"
+                  left="0"
+                  right="0"
+                  bottom="0"
+                  bg="teal.600"
+                  px={8}
+                  py={8}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  backgroundImage="linear-gradient(135deg, teal.600, teal.700)"
+                >
+                  <Box color="white" maxW="65%">
+                    <Heading size="lg" mb={4} display="flex" alignItems="center" gap={3}>
+                      <Icon as={FaTools} boxSize={6} />
+                      Professional Services
+                    </Heading>
+                    <Text fontSize="md" mb={4} lineHeight="tall">
+                      Expert contractors for every home improvement project
+                    </Text>
+                    <Button
+                      size="md"
+                      colorScheme="whiteAlpha"
+                      _hover={{ bg: 'whiteAlpha.300' }}
+                      leftIcon={<Icon as={FaHammer} />}
+                    >
+                      Find Contractors
+                    </Button>
+                  </Box>
+                  <Icon as={FaBuilding} color="white" boxSize={12} opacity={0.9} />
+                </Flex>
+              </Box>
+
+              {/* Right Column */}
+              <Box
+                w="full"
+                h="220px"
+                bg="gray.100"
+                borderRadius="xl"
+                position="relative"
+                overflow="hidden"
+                boxShadow="lg"
+                _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
+                transition="all 0.3s"
+                cursor="pointer"
+              >
+                <Flex
+                  position="absolute"
+                  top="0"
+                  left="0"
+                  right="0"
+                  bottom="0"
+                  bg="orange.600"
+                  px={8}
+                  py={8}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  backgroundImage="linear-gradient(135deg, orange.600, orange.700)"
+                >
+                  <Box color="white" maxW="65%">
+                    <Heading size="lg" mb={4} display="flex" alignItems="center" gap={3}>
+                      <Icon as={FaHome} boxSize={6} />
+                      Home Services
+                    </Heading>
+                    <Text fontSize="md" mb={4} lineHeight="tall">
+                      Quality maintenance and repair services for your home
+                    </Text>
+                    <Button
+                      size="md"
+                      colorScheme="whiteAlpha"
+                      _hover={{ bg: 'whiteAlpha.300' }}
+                      leftIcon={<Icon as={FaWrench} />}
+                    >
+                      Book Service
+                    </Button>
+                  </Box>
+                  <Icon as={FaPaintRoller} color="white" boxSize={12} opacity={0.9} />
+                </Flex>
+              </Box>
+            </SimpleGrid>
+          </Container>
+        </Box>
+
         <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="High Rated" products={highRatedProducts} cardBgColor={cardBgColor} />
         </Box>
         {/* News Section */}
         <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
-          <Heading size="lg" mb={6} textAlign="center" color="gray.800">Homeowner & Real Estate News</Heading>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={4}>
-            <Box
-              bg="white"
-              p={6}
-              borderRadius="xl"
-              boxShadow="md"
-              _hover={{
-                transform: 'translateY(-4px)',
-                boxShadow: 'xl',
-                transition: 'all 0.2s'
-              }}
-              transition="all 0.2s"
-              as={NextLink}
-              href="/news/market-trends"
-              cursor="pointer"
-              borderLeft="4px solid"
-              borderColor="blue.400"
-            >
-              <Flex direction="column" align="center" textAlign="center">
+          <Heading size="lg" mb={8} textAlign="center" color="gray.800">Homeowner & Real Estate News</Heading>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} px={4}>
+            {/* News Column */}
+            <Box>
+              <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={4}>
                 <Box
-                  w="60px"
-                  h="60px"
-                  borderRadius="full"
-                  bg="blue.50"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  mb={4}
+                  bg="white"
+                  p={4}
+                  borderRadius="lg"
+                  boxShadow="sm"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'md',
+                    transition: 'all 0.2s'
+                  }}
+                  transition="all 0.2s"
+                  as={NextLink}
+                  href="/news/market-trends"
+                  cursor="pointer"
+                  borderLeft="4px solid"
+                  borderColor="blue.400"
                 >
-                  <Icon as={FaChartLine} boxSize={6} color="blue.500" />
+                  <Flex direction="column" gap={3}>
+                    <Box
+                      w="40px"
+                      h="40px"
+                      borderRadius="full"
+                      bg="blue.50"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Icon as={FaChartLine} boxSize={4} color="blue.500" />
+                    </Box>
+                    <Box>
+                      <Heading size="sm" mb={1} color="blue.700">Market Trends</Heading>
+                      <Text color="blue.600" fontSize="sm" fontWeight="semibold">Home Values Up 5.2%</Text>
+                      <Text color="gray.600" fontSize="sm">Local market shows steady growth</Text>
+                    </Box>
+                  </Flex>
                 </Box>
-                <Heading size="md" mb={3} color="blue.700">Market Trends</Heading>
-                <VStack spacing={2} align="start" w="full">
-                  <Text color="blue.600" fontWeight="semibold">Home Values Up 5.2%</Text>
-                  <Text color="gray.600">Local market shows steady growth</Text>
-                  <Text color="gray.600">Best time to invest in improvements</Text>
-                </VStack>
-              </Flex>
+
+                <Box
+                  bg="white"
+                  p={4}
+                  borderRadius="lg"
+                  boxShadow="sm"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'md',
+                    transition: 'all 0.2s'
+                  }}
+                  transition="all 0.2s"
+                  as={NextLink}
+                  href="/news/renovation-tips"
+                  cursor="pointer"
+                  borderLeft="4px solid"
+                  borderColor="green.400"
+                >
+                  <Flex direction="column" gap={3}>
+                    <Box
+                      w="40px"
+                      h="40px"
+                      borderRadius="full"
+                      bg="green.50"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Icon as={FaTools} boxSize={4} color="green.500" />
+                    </Box>
+                    <Box>
+                      <Heading size="sm" mb={1} color="green.700">Renovation Guide</Heading>
+                      <Text color="green.600" fontSize="sm" fontWeight="semibold">ROI Guide 2024</Text>
+                      <Text color="gray.600" fontSize="sm">Top projects for value increase</Text>
+                    </Box>
+                  </Flex>
+                </Box>
+
+                <Box
+                  bg="white"
+                  p={4}
+                  borderRadius="lg"
+                  boxShadow="sm"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'md',
+                    transition: 'all 0.2s'
+                  }}
+                  transition="all 0.2s"
+                  as={NextLink}
+                  href="/news/smart-home"
+                  cursor="pointer"
+                  borderLeft="4px solid"
+                  borderColor="purple.400"
+                >
+                  <Flex direction="column" gap={3}>
+                    <Box
+                      w="40px"
+                      h="40px"
+                      borderRadius="full"
+                      bg="purple.50"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Icon as={FaBolt} boxSize={4} color="purple.500" />
+                    </Box>
+                    <Box>
+                      <Heading size="sm" mb={1} color="purple.700">Smart Home Trends</Heading>
+                      <Text color="purple.600" fontSize="sm" fontWeight="semibold">Tech Integration Guide</Text>
+                      <Text color="gray.600" fontSize="sm">Latest smart home innovations</Text>
+                    </Box>
+                  </Flex>
+                </Box>
+
+                <Box
+                  bg="white"
+                  p={4}
+                  borderRadius="lg"
+                  boxShadow="sm"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'md',
+                    transition: 'all 0.2s'
+                  }}
+                  transition="all 0.2s"
+                  as={NextLink}
+                  href="/news/sustainability"
+                  cursor="pointer"
+                  borderLeft="4px solid"
+                  borderColor="teal.400"
+                >
+                  <Flex direction="column" gap={3}>
+                    <Box
+                      w="40px"
+                      h="40px"
+                      borderRadius="full"
+                      bg="teal.50"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Icon as={FaTree} boxSize={4} color="teal.500" />
+                    </Box>
+                    <Box>
+                      <Heading size="sm" mb={1} color="teal.700">Eco-Friendly Homes</Heading>
+                      <Text color="teal.600" fontSize="sm" fontWeight="semibold">Sustainable Living</Text>
+                      <Text color="gray.600" fontSize="sm">Green home improvements</Text>
+                    </Box>
+                  </Flex>
+                </Box>
+
+                <Box
+                  bg="white"
+                  p={4}
+                  borderRadius="lg"
+                  boxShadow="sm"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'md',
+                    transition: 'all 0.2s'
+                  }}
+                  transition="all 0.2s"
+                  as={NextLink}
+                  href="/news/financing"
+                  cursor="pointer"
+                  borderLeft="4px solid"
+                  borderColor="yellow.400"
+                >
+                  <Flex direction="column" gap={3}>
+                    <Box
+                      w="40px"
+                      h="40px"
+                      borderRadius="full"
+                      bg="yellow.50"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Icon as={FaCoins} boxSize={4} color="yellow.500" />
+                    </Box>
+                    <Box>
+                      <Heading size="sm" mb={1} color="yellow.700">Home Financing</Heading>
+                      <Text color="yellow.600" fontSize="sm" fontWeight="semibold">Renovation Loans</Text>
+                      <Text color="gray.600" fontSize="sm">Smart financing options</Text>
+                    </Box>
+                  </Flex>
+                </Box>
+
+                <Box
+                  bg="white"
+                  p={4}
+                  borderRadius="lg"
+                  boxShadow="sm"
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'md',
+                    transition: 'all 0.2s'
+                  }}
+                  transition="all 0.2s"
+                  as={NextLink}
+                  href="/news/safety"
+                  cursor="pointer"
+                  borderLeft="4px solid"
+                  borderColor="red.400"
+                >
+                  <Flex direction="column" gap={3}>
+                    <Box
+                      w="40px"
+                      h="40px"
+                      borderRadius="full"
+                      bg="red.50"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Icon as={FaShieldAlt} boxSize={4} color="red.500" />
+                    </Box>
+                    <Box>
+                      <Heading size="sm" mb={1} color="red.700">Home Safety</Heading>
+                      <Text color="red.600" fontSize="sm" fontWeight="semibold">Security Updates</Text>
+                      <Text color="gray.600" fontSize="sm">Latest safety features</Text>
+                    </Box>
+                  </Flex>
+                </Box>
+              </SimpleGrid>
             </Box>
 
+            {/* Newsletter Column */}
             <Box
               bg="white"
               p={6}
               borderRadius="xl"
-              boxShadow="md"
-              _hover={{
-                transform: 'translateY(-4px)',
-                boxShadow: 'xl',
-                transition: 'all 0.2s'
-              }}
+              boxShadow="sm"
+              border="1px solid"
+              borderColor="gray.200"
+              _hover={{ boxShadow: 'md' }}
               transition="all 0.2s"
-              as={NextLink}
-              href="/news/renovation-tips"
-              cursor="pointer"
-              borderLeft="4px solid"
-              borderColor="blue.400"
             >
-              <Flex direction="column" align="center" textAlign="center">
-                <Box
-                  w="60px"
-                  h="60px"
-                  borderRadius="full"
-                  bg="blue.50"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  mb={4}
-                >
-                  <Icon as={FaHome} boxSize={6} color="blue.500" />
-                </Box>
-                <Heading size="md" mb={3} color="blue.700">Renovation Tips</Heading>
-                <VStack spacing={2} align="start" w="full">
-                  <Text color="blue.600" fontWeight="semibold">ROI Guide 2024</Text>
-                  <Text color="gray.600">Top projects for value increase</Text>
-                  <Text color="gray.600">Expert advice for homeowners</Text>
-                </VStack>
-              </Flex>
-            </Box>
+              <VStack spacing={6} align="center" w="full">
+                <Box w="full" textAlign="center">
+                  <Heading size="md" mb={4} color="gray.800" display="flex" alignItems="center" gap={2} justifyContent="center">
+                    <Icon as={FaNewspaper} color="blue.500" boxSize={5} />
+                    Stay Updated
+                  </Heading>
+                  <Text color="gray.700" fontSize="sm" fontWeight="medium" mb={4}>Get exclusive access to:</Text>
+                  <SimpleGrid columns={2} spacing={4}>
+                    <Box p={3} bg="blue.50" borderRadius="lg" _hover={{ transform: 'translateY(-2px)', transition: 'all 0.2s' }} transition="all 0.2s">
+                      <VStack align="center" spacing={2}>
+                        <Box bg="blue.100" p={2} borderRadius="md">
+                          <Icon as={FaChartLine} color="blue.600" boxSize={4} />
+                        </Box>
+                        <Box textAlign="center">
+                          <Text fontSize="sm" fontWeight="bold" color="blue.700">Market Analysis & Trends</Text>
+                          <Text fontSize="xs" color="blue.600">Weekly market updates and forecasts</Text>
+                        </Box>
+                      </VStack>
+                    </Box>
 
-            <Box
-              bg="white"
-              p={6}
-              borderRadius="xl"
-              boxShadow="md"
-              _hover={{
-                transform: 'translateY(-4px)',
-                boxShadow: 'xl',
-                transition: 'all 0.2s'
-              }}
-              transition="all 0.2s"
-              as={NextLink}
-              href="/news/investment"
-              cursor="pointer"
-              borderLeft="4px solid"
-              borderColor="blue.400"
-            >
-              <Flex direction="column" align="center" textAlign="center">
-                <Box
-                  w="60px"
-                  h="60px"
-                  borderRadius="full"
-                  bg="blue.50"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  mb={4}
-                >
-                  <Icon as={FaCoins} boxSize={6} color="blue.500" />
+                    <Box p={3} bg="green.50" borderRadius="lg" _hover={{ transform: 'translateY(-2px)', transition: 'all 0.2s' }} transition="all 0.2s">
+                      <VStack align="center" spacing={2}>
+                        <Box bg="green.100" p={2} borderRadius="md">
+                          <Icon as={FaTools} color="green.600" boxSize={4} />
+                        </Box>
+                        <Box textAlign="center">
+                          <Text fontSize="sm" fontWeight="bold" color="green.700">Home Improvement Tips</Text>
+                          <Text fontSize="xs" color="green.600">Expert advice and DIY guides</Text>
+                        </Box>
+                      </VStack>
+                    </Box>
+
+                    <Box p={3} bg="purple.50" borderRadius="lg" _hover={{ transform: 'translateY(-2px)', transition: 'all 0.2s' }} transition="all 0.2s">
+                      <VStack align="center" spacing={2}>
+                        <Box bg="purple.100" p={2} borderRadius="md">
+                          <Icon as={FaHome} color="purple.600" boxSize={4} />
+                        </Box>
+                        <Box textAlign="center">
+                          <Text fontSize="sm" fontWeight="bold" color="purple.700">Property Value Insights</Text>
+                          <Text fontSize="xs" color="purple.600">Real-time property valuations</Text>
+                        </Box>
+                      </VStack>
+                    </Box>
+
+                    <Box p={3} bg="orange.50" borderRadius="lg" _hover={{ transform: 'translateY(-2px)', transition: 'all 0.2s' }} transition="all 0.2s">
+                      <VStack align="center" spacing={2}>
+                        <Box bg="orange.100" p={2} borderRadius="md">
+                          <Icon as={FaHandshake} color="orange.600" boxSize={4} />
+                        </Box>
+                        <Box textAlign="center">
+                          <Text fontSize="sm" fontWeight="bold" color="orange.700">Exclusive Contractor Deals</Text>
+                          <Text fontSize="xs" color="orange.600">Special rates from trusted pros</Text>
+                        </Box>
+                      </VStack>
+                    </Box>
+                  </SimpleGrid>
                 </Box>
-                <Heading size="md" mb={3} color="blue.700">Investment News</Heading>
-                <VStack spacing={2} align="start" w="full">
-                  <Text color="blue.600" fontWeight="semibold">Smart Home ROI</Text>
-                  <Text color="gray.600">Tech upgrades that pay off</Text>
-                  <Text color="gray.600">Future-proof your home</Text>
+
+                <Box w="full" bg="gray.50" p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
+                  <Text fontSize="sm" fontWeight="medium" color="gray.700" mb={3} textAlign="center">
+                    Join 5,000+ homeowners getting weekly updates
+                  </Text>
+                  <InputGroup size="md">
+                    <Input
+                      placeholder="Enter your email"
+                      bg="white"
+                      borderRadius="full"
+                      _focus={{
+                        borderColor: "blue.400",
+                        boxShadow: "0 0 0 1px blue.400"
+                      }}
+                    />
+                    <InputRightElement width="auto" pr={1}>
+                      <Button
+                        size="sm"
+                        colorScheme="blue"
+                        borderRadius="full"
+                        px={4}
+                        leftIcon={<Icon as={FaNewspaper} />}
+                      >
+                        Subscribe
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </Box>
+
+                <VStack spacing={2} w="full" pt={2}>
+                  <Text fontSize="xs" color="gray.500" textAlign="center">
+                    ✓ Free weekly newsletter ✓ No spam ✓ Cancel anytime
+                  </Text>
+                  <Text fontSize="xs" color="gray.500" textAlign="center">
+                    By subscribing, you agree to our Terms & Privacy Policy
+                  </Text>
                 </VStack>
-              </Flex>
+              </VStack>
             </Box>
           </SimpleGrid>
         </Box>
