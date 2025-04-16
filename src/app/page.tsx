@@ -70,7 +70,7 @@ export default function Home() {
     <>
       <Navbar />
       {/* eBay-style Hero Section */}
-      <Box bg={cardBgColor} py={4} borderBottom="1px" borderColor="gray.200">
+      <Box bg="white" py={4} borderBottom="1px" borderColor="gray.200">
         <Container maxW="container.xl">
           <Flex direction={{ base: 'column', md: 'row' }} align="stretch" gap={10}>
             {/* Left: Carousel */}
@@ -361,24 +361,24 @@ export default function Home() {
       </Box>
 
       {/* Dynamic Sections as Carousels */}
-      <Container maxW="container.xl" py={12}>
-        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+      <Container maxW="container.xl" py={12} bg="white">
+        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Featured" products={featuredProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Recommended for You" products={recommendedProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Top Liked" products={topLikedProducts} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="Best Sellers" products={bestSellers} cardBgColor={cardBgColor} />
         </Box>
-        <Box py={8} bg={cardBgColor} borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <SectionCarousel title="High Rated" products={highRatedProducts} cardBgColor={cardBgColor} />
         </Box>
         {/* News Section */}
-        <Box py={8} bg="gray.50" borderRadius="2xl" mb={10} boxShadow="sm">
+        <Box py={8} bg="white" borderRadius="2xl" mb={10} boxShadow="sm">
           <Heading size="lg" mb={6} textAlign="center" color="gray.800">Homeowner & Real Estate News</Heading>
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={4}>
             <Box
