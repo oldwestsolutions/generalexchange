@@ -199,7 +199,7 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg="blue.50" 
+                      bg="white" 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
@@ -244,7 +244,7 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg="blue.50" 
+                      bg="white" 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
@@ -289,7 +289,7 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg="blue.50" 
+                      bg="white" 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
@@ -582,7 +582,7 @@ function SectionCarousel({ title, products, cardBgColor }: { title: string, prod
               right={0} 
               w="100px" 
               h="100px" 
-              bg={iconBgColor} 
+              bg="white" 
               borderRadius="full" 
               transform="translate(50%, -50%)"
               opacity={0.2}
