@@ -91,9 +91,6 @@ export default function Home() {
               <Box w="full">
                 <form onSubmit={handleSearch} style={{ width: '100%' }}>
                   <InputGroup size={{ base: "md", md: "lg" }}>
-                    <InputLeftElement pointerEvents="none">
-                      <Icon as={FaSearch} color={textColor} />
-                    </InputLeftElement>
                     <Input
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
