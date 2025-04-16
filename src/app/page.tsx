@@ -134,7 +134,7 @@ export default function Home() {
                 mx="auto" 
                 mb={0} 
                 position="relative" 
-                bg={cardBgColor} 
+                bg="white" 
                 borderRadius="2xl" 
                 boxShadow="lg" 
                 border="1.5px solid #e2e8f0" 
