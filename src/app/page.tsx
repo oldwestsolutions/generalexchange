@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Box, Container, Heading, Text, VStack, Button, Input, InputGroup, InputRightElement, IconButton, Flex, Link, HStack, Badge, SimpleGrid, InputLeftElement, useColorModeValue } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, VStack, Button, Input, InputGroup, InputRightElement, IconButton, Flex, Link, HStack, Badge, SimpleGrid, InputLeftElement, useColorModeValue, ButtonGroup, Skeleton } from '@chakra-ui/react'
 import { FaSearch, FaTools, FaHammer, FaPaintRoller, FaWrench, FaHome, FaBuilding, FaChevronLeft, FaChevronRight, FaShieldAlt, FaExclamationTriangle, FaFire, FaStar, FaMedal, FaCrown, FaCoins, FaHandshake, FaNetworkWired, FaUsers, FaChartLine, FaNewspaper, FaBolt, FaTree, FaTemperatureHigh } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -509,71 +509,120 @@ const SectionHeading = (props: any) => (
   <Heading size="xl" mb={8} color="gray.800" letterSpacing="-1px" {...props} />
 )
 
-interface SectionCarouselProps {
-  title: string;
-  products: any[];
-  cardBgColor: string;
-}
+function SectionCarousel({ title, products, cardBgColor }: { title: string, products: any[], cardBgColor: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const iconColor = "blue.500";
+  const iconBgColor = "blue.50";
+  const textColor = "gray.600";
 
-const SectionCarousel: React.FC<SectionCarouselProps> = ({ title, products, cardBgColor }) => (
-  <Box mb={6}>
-    <Flex align="center" justify="space-between" mb={6}>
-      <Heading size="lg" color="gray.800">{title}</Heading>
-      <Button variant="link" colorScheme="blue" fontWeight="bold" fontSize="md">See all</Button>
-    </Flex>
-    <Box overflowX="auto" whiteSpace="nowrap" pb={4}>
-      <Flex gap={6}>
-        {products.map((product, idx) => (
-          <Box 
-            key={idx} 
-            minW="280px" 
-            maxW="280px" 
-            bg={cardBgColor} 
-            boxShadow="md" 
-            borderRadius="xl" 
-            p={6} 
-            textAlign="center" 
-            display="inline-block" 
-            _hover={{ 
-              boxShadow: '2xl', 
-              transform: 'translateY(-4px)', 
-              transition: 'all 0.2s' 
-            }} 
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : products.length - 4));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex < products.length - 4 ? prevIndex + 1 : 0));
+  };
+
+  const visibleProducts = products.slice(currentIndex, currentIndex + 4);
+
+  return (
+    <Box position="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+      <Flex justify="space-between" align="center" mb={6}>
+        <Heading size="lg" color="gray.800">{title}</Heading>
+        <ButtonGroup spacing={2}>
+          <IconButton
+            aria-label="Previous"
+            icon={<FaChevronLeft />}
+            onClick={handlePrev}
+            variant="ghost"
+            colorScheme="blue"
+            size="sm"
+            isDisabled={currentIndex === 0}
+          />
+          <IconButton
+            aria-label="Next"
+            icon={<FaChevronRight />}
+            onClick={handleNext}
+            variant="ghost"
+            colorScheme="blue"
+            size="sm"
+            isDisabled={currentIndex >= products.length - 4}
+          />
+        </ButtonGroup>
+      </Flex>
+      <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6}>
+        {visibleProducts.map((product, index) => (
+          <Box
+            key={index}
+            as={NextLink}
+            href={`/product/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
+            bg="white"
+            p={6}
+            borderRadius="xl"
+            boxShadow="md"
+            _hover={{
+              transform: 'translateY(-4px)',
+              boxShadow: 'xl',
+              transition: 'all 0.2s'
+            }}
             transition="all 0.2s"
+            border="1px solid"
+            borderColor="gray.100"
+            position="relative"
+            overflow="hidden"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            textAlign="center"
           >
-            <Box position="relative" w="full" h="200px" mb={4}>
+            <Box 
+              position="absolute" 
+              top={0} 
+              right={0} 
+              w="100px" 
+              h="100px" 
+              bg={iconBgColor} 
+              borderRadius="full" 
+              transform="translate(50%, -50%)"
+              opacity={0.2}
+            />
+            <Box position="relative" w="200px" h="200px" mb={4}>
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={idx < 2}
+                style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
+                sizes="(max-width: 768px) 200px, 200px"
               />
             </Box>
-            <VStack spacing={2} align="center">
-              <Text fontWeight="bold" fontSize="lg" color="gray.800">{product.name}</Text>
-              <Text color="gray.500" fontSize="sm">{product.category}</Text>
-              <Text color="blue.500" fontWeight="bold" fontSize="xl">${product.price.toFixed(2)}</Text>
-              <Button 
-                mt={2} 
-                colorScheme="blue" 
-                size="md" 
-                borderRadius="full" 
-                fontWeight="bold" 
+            <VStack align="center" spacing={2.5} w="full">
+              <Text fontSize="sm" color={textColor} lineHeight="tall">{product.category}</Text>
+              <Heading as="h3" fontSize="lg" color="gray.800" mb={3}>
+                {product.name}
+              </Heading>
+              <Text fontSize="xl" fontWeight="bold" color="blue.600">
+                ${product.price.toFixed(2)}
+              </Text>
+              <Button
+                colorScheme="blue"
+                size="sm"
                 w="full"
-                _hover={{ transform: 'translateY(-2px)', boxShadow: 'md' }}
-                transition="all 0.2s"
+                mt={2}
+                _hover={{ bg: 'blue.600' }}
               >
                 View Details
               </Button>
             </VStack>
           </Box>
         ))}
-      </Flex>
+      </SimpleGrid>
     </Box>
-  </Box>
-)
+  );
+}
 
 // Fix linter errors by typing NewsGrid and its parameters
 interface NewsItem {
