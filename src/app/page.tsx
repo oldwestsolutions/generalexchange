@@ -178,7 +178,7 @@ export default function Home() {
                     href="/news/market-trends" 
                     p={4} 
                     borderRadius="xl" 
-                    bg={cardBgColor} 
+                    bg="red.50" 
                     boxShadow="sm" 
                     _hover={{ 
                       transform: 'translateY(-4px)', 
@@ -201,13 +201,13 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg={iconBgColor} 
+                      bg="blue.50" 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
                     />
-                    <Icon as={FaChartLine} color={iconColor} boxSize={6} mb={3} />
-                    <Heading as="h3" fontSize="lg" color="blue.600" mb={3}>
+                    <Icon as={FaChartLine} color="blue.500" boxSize={6} mb={3} />
+                    <Heading as="h3" fontSize="lg" color="red.700" mb={3}>
                       Market Trends
                     </Heading>
                     <VStack align="center" spacing={2.5} w="full">
@@ -223,12 +223,12 @@ export default function Home() {
                     href="/news/renovation-tips" 
                     p={4} 
                     borderRadius="xl" 
-                    bg={cardBgColor} 
+                    bg="yellow.50" 
                     boxShadow="sm" 
                     _hover={{ 
                       transform: 'translateY(-4px)', 
                       boxShadow: 'xl',
-                      borderColor: 'green.200'
+                      borderColor: 'blue.200'
                     }}
                     transition="all 0.3s"
                     border="1px solid"
@@ -246,17 +246,17 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg={iconBgColor} 
+                      bg="blue.50" 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
                     />
-                    <Icon as={FaTools} color={iconColor} boxSize={6} mb={3} />
-                    <Heading as="h3" fontSize="lg" color="green.600" mb={3}>
+                    <Icon as={FaTools} color="blue.500" boxSize={6} mb={3} />
+                    <Heading as="h3" fontSize="lg" color="yellow.700" mb={3}>
                       Renovation Tips
                     </Heading>
                     <VStack align="center" spacing={2.5} w="full">
-                      <Text fontSize="sm" color="green.600" fontWeight="semibold" lineHeight="tall">ROI Guide 2024</Text>
+                      <Text fontSize="sm" color="blue.600" fontWeight="semibold" lineHeight="tall">ROI Guide 2024</Text>
                       <Text fontSize="sm" color={textColor} lineHeight="tall">Top projects for value increase</Text>
                       <Text fontSize="sm" color={textColor} lineHeight="tall">Expert advice for homeowners</Text>
                     </VStack>
@@ -268,12 +268,12 @@ export default function Home() {
                     href="/news/investment" 
                     p={4} 
                     borderRadius="xl" 
-                    bg={cardBgColor} 
+                    bg="blue.50" 
                     boxShadow="sm" 
                     _hover={{ 
                       transform: 'translateY(-4px)', 
                       boxShadow: 'xl',
-                      borderColor: 'purple.200'
+                      borderColor: 'blue.200'
                     }}
                     transition="all 0.3s"
                     border="1px solid"
@@ -291,17 +291,17 @@ export default function Home() {
                       right={0} 
                       w="100px" 
                       h="100px" 
-                      bg={iconBgColor} 
+                      bg="blue.50" 
                       borderRadius="full" 
                       transform="translate(50%, -50%)"
                       opacity={0.2}
                     />
-                    <Icon as={FaCoins} color={iconColor} boxSize={6} mb={3} />
-                    <Heading as="h3" fontSize="lg" color="purple.600" mb={3}>
+                    <Icon as={FaCoins} color="blue.500" boxSize={6} mb={3} />
+                    <Heading as="h3" fontSize="lg" color="blue.700" mb={3}>
                       Investment News
                     </Heading>
                     <VStack align="center" spacing={2.5} w="full">
-                      <Text fontSize="sm" color="purple.600" fontWeight="semibold" lineHeight="tall">Smart Home ROI</Text>
+                      <Text fontSize="sm" color="blue.600" fontWeight="semibold" lineHeight="tall">Smart Home ROI</Text>
                       <Text fontSize="sm" color={textColor} lineHeight="tall">Tech upgrades that pay off</Text>
                       <Text fontSize="sm" color={textColor} lineHeight="tall">Future-proof your home</Text>
                     </VStack>
@@ -377,12 +377,12 @@ export default function Home() {
           <SectionCarousel title="High Rated" products={highRatedProducts} cardBgColor={cardBgColor} />
         </Box>
         {/* News Section */}
-        <Box py={8} bg={bgColor} borderRadius="2xl" mb={10} boxShadow="sm">
-          <Heading size="lg" mb={6} textAlign="center">Latest News</Heading>
+        <Box py={8} bg="gray.50" borderRadius="2xl" mb={10} boxShadow="sm">
+          <Heading size="lg" mb={6} textAlign="center" color="gray.800">Homeowner & Real Estate News</Heading>
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={4}>
             <Box
-              bg={cardBgColor}
-              p={4}
+              bg="white"
+              p={6}
               borderRadius="xl"
               boxShadow="md"
               _hover={{
@@ -394,32 +394,34 @@ export default function Home() {
               as={NextLink}
               href="/news/market-trends"
               cursor="pointer"
+              borderLeft="4px solid"
+              borderColor="blue.400"
             >
               <Flex direction="column" align="center" textAlign="center">
                 <Box
-                  w="50px"
-                  h="50px"
+                  w="60px"
+                  h="60px"
                   borderRadius="full"
-                  bg={iconBgColor}
+                  bg="blue.50"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  mb={3}
+                  mb={4}
                 >
-                  <Icon as={FaChartLine} boxSize={5} color={iconColor} />
+                  <Icon as={FaChartLine} boxSize={6} color="blue.500" />
                 </Box>
-                <Heading size="sm" mb={2}>
-                  Market Trends
-                </Heading>
-                <Text color={textColor} fontSize="sm">
-                  Home values up 5.2% • Local market growth • Investment timing
-                </Text>
+                <Heading size="md" mb={3} color="blue.700">Market Trends</Heading>
+                <VStack spacing={2} align="start" w="full">
+                  <Text color="blue.600" fontWeight="semibold">Home Values Up 5.2%</Text>
+                  <Text color="gray.600">Local market shows steady growth</Text>
+                  <Text color="gray.600">Best time to invest in improvements</Text>
+                </VStack>
               </Flex>
             </Box>
 
             <Box
-              bg={cardBgColor}
-              p={4}
+              bg="white"
+              p={6}
               borderRadius="xl"
               boxShadow="md"
               _hover={{
@@ -431,32 +433,34 @@ export default function Home() {
               as={NextLink}
               href="/news/renovation-tips"
               cursor="pointer"
+              borderLeft="4px solid"
+              borderColor="blue.400"
             >
               <Flex direction="column" align="center" textAlign="center">
                 <Box
-                  w="50px"
-                  h="50px"
+                  w="60px"
+                  h="60px"
                   borderRadius="full"
-                  bg={iconBgColor}
+                  bg="blue.50"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  mb={3}
+                  mb={4}
                 >
-                  <Icon as={FaHome} boxSize={5} color={iconColor} />
+                  <Icon as={FaHome} boxSize={6} color="blue.500" />
                 </Box>
-                <Heading size="sm" mb={2}>
-                  Renovation Tips
-                </Heading>
-                <Text color={textColor} fontSize="sm">
-                  ROI Guide 2024 • Value-increasing projects • Expert advice
-                </Text>
+                <Heading size="md" mb={3} color="blue.700">Renovation Tips</Heading>
+                <VStack spacing={2} align="start" w="full">
+                  <Text color="blue.600" fontWeight="semibold">ROI Guide 2024</Text>
+                  <Text color="gray.600">Top projects for value increase</Text>
+                  <Text color="gray.600">Expert advice for homeowners</Text>
+                </VStack>
               </Flex>
             </Box>
 
             <Box
-              bg={cardBgColor}
-              p={4}
+              bg="white"
+              p={6}
               borderRadius="xl"
               boxShadow="md"
               _hover={{
@@ -468,26 +472,28 @@ export default function Home() {
               as={NextLink}
               href="/news/investment"
               cursor="pointer"
+              borderLeft="4px solid"
+              borderColor="blue.400"
             >
               <Flex direction="column" align="center" textAlign="center">
                 <Box
-                  w="50px"
-                  h="50px"
+                  w="60px"
+                  h="60px"
                   borderRadius="full"
-                  bg={iconBgColor}
+                  bg="blue.50"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
-                  mb={3}
+                  mb={4}
                 >
-                  <Icon as={FaChartLine} boxSize={5} color={iconColor} />
+                  <Icon as={FaCoins} boxSize={6} color="blue.500" />
                 </Box>
-                <Heading size="sm" mb={2}>
-                  Investment News
-                </Heading>
-                <Text color={textColor} fontSize="sm">
-                  Smart Home ROI • Tech upgrade benefits • Future-proofing tips
-                </Text>
+                <Heading size="md" mb={3} color="blue.700">Investment News</Heading>
+                <VStack spacing={2} align="start" w="full">
+                  <Text color="blue.600" fontWeight="semibold">Smart Home ROI</Text>
+                  <Text color="gray.600">Tech upgrades that pay off</Text>
+                  <Text color="gray.600">Future-proof your home</Text>
+                </VStack>
               </Flex>
             </Box>
           </SimpleGrid>
@@ -591,25 +597,25 @@ const featuredProducts = [
     name: 'Smart Thermostat', 
     category: 'Electronics', 
     price: 199.99, 
-    image: '/images/thermostat.jpg'
+    image: 'https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?auto=format&fit=crop&w=600&h=600&q=80'
   },
   { 
     name: 'Rainfall Shower', 
     category: 'Home Improvement', 
     price: 299.99, 
-    image: '/images/shower.jpg'
+    image: 'https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&h=600&q=80'
   },
   { 
     name: 'LED Ceiling Fan', 
     category: 'Lighting', 
     price: 149.99, 
-    image: '/images/fan.jpg'
+    image: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=600&h=600&q=80'
   },
   { 
     name: 'Cordless Drill', 
     category: 'Tools', 
     price: 89.99, 
-    image: '/images/drill.jpg'
+    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&h=600&q=80'
   },
 ]
 const recommendedProducts = [

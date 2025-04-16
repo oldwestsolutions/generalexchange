@@ -5,7 +5,6 @@ import { Box, Container, Heading, Text, VStack, SimpleGrid, Button, Icon, Flex, 
 import { FaTools, FaHammer, FaPaintRoller, FaWrench, FaHome, FaBuilding } from 'react-icons/fa'
 import Navbar from '@/components/Navbar'
 import NextLink from 'next/link'
-import NextImage from 'next/image'
 
 export default function HomeImprovement() {
   const bgColor = useColorModeValue('white', 'gray.800')
@@ -82,16 +81,15 @@ export default function HomeImprovement() {
                   overflow="hidden"
                   borderRadius="lg"
                 >
-                  <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                    <NextImage
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      style={{ objectFit: 'cover' }}
-                      priority={index < 2}
-                    />
-                  </div>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </Box>
                 <Box p={6}>
                   <Flex align="center" mb={4}>
